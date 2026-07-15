@@ -62,35 +62,8 @@ Search for and update:
 - RootCraft Academy text
 
 
-## Multilingual update
-
-This package preserves the original RootCraft design and layout.
-
-Only multilingual learning support was added:
-
-- Kannada
-- English
-- Hindi
-- The same lesson cards, quiz, memory game and story layout
-- Separate progress for each language
-- A language selector added inside the existing learning toolbar
-- No server, Node.js or npm required
-
-The old service worker was removed to prevent outdated language data from remaining cached.
-
-
-## Header language selector update
-
-- Removed the `Kannada Learning` navigation tab.
-- Moved the Kannada / English / Hindi dropdown into the same header position.
-- Removed the duplicate dropdown from the learning toolbar.
-- Kept the existing design, layout, sections and content unchanged.
-
-
-## Dual language selector update
-
-- Header language selector retained.
-- Learning-section language selector restored.
-- Both selectors stay synchronized.
-- Changing either selector updates the same multilingual content.
-- Existing design, colours, layout, cards and sections remain unchanged.
+## V2 Changes
+- Added multilingual landing section
+- English Learning placeholder
+- Hindi Learning placeholder
+- Kannada retained as full module

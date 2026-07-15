@@ -7,7 +7,7 @@
   <meta name="description" content="RootCraft Academy — crafting strong roots for bright futures through joyful learning, values and creativity.">
   <meta name="theme-color" content="#1f5d42">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css?v=2.2.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
@@ -20,11 +20,7 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
-      <select id="languageSelector" class="header-language-selector" aria-label="Select learning language">
-        <option value="kannada">Kannada</option>
-        <option value="english">English</option>
-        <option value="hindi">Hindi</option>
-      </select>
+      <a href="#learning">Kannada Learning</a>
       <a href="#stories">Stories</a>
       <a href="#games">Games</a>
       <a href="#contact">Contact</a>
@@ -42,7 +38,7 @@
           languages, creativity, technology and discovery.
         </p>
         <div class="hero-actions">
-          <a id="heroLearningButton" class="btn primary" href="#learning">Start Learning Kannada</a>
+          <a class="btn primary" href="#languages">Start Learning</a>
           <a class="btn secondary" href="#programs">Explore Programs</a>
         </div>
         <div class="hero-stats">
@@ -106,19 +102,28 @@
       </div>
     </section>
 
-    <section id="learning" class="section learning-section">
+    
+<section id="languages" class="section">
+<div class="section-heading">
+<p class="eyebrow">Choose a Language</p>
+<h2>Learn in your preferred language.</h2>
+<p>Select Kannada, English or Hindi. More languages will be added soon.</p>
+</div>
+<div class="card-grid three">
+<article class="program-card"><span>🇮🇳</span><h3>Kannada Learning</h3><p>Letters, words, stories, games and quizzes.</p><a class="btn primary" href="#learning">Open Kannada</a></article>
+<article class="program-card"><span>🇬🇧</span><h3>English Learning</h3><p>Alphabet, phonics, vocabulary, stories and quizzes.</p><button class="btn secondary">Coming in Package 2</button></article>
+<article class="program-card"><span>🇮🇳</span><h3>Hindi Learning</h3><p>स्वर, व्यंजन, words, stories and quizzes.</p><button class="btn secondary">Coming in Package 2</button></article>
+</div>
+</section>
+
+<section id="learning" class="section learning-section">
       <div class="section-heading">
-        <p id="learningEyebrow" class="eyebrow">RootCraft Kannada</p>
-        <h2 id="learningHeading">Learn Kannada through pictures, words and play.</h2>
-        <p id="learningDescription">Choose a topic to begin. Progress is saved on this device.</p>
+        <p class="eyebrow">RootCraft Kannada</p>
+        <h2>Learn Kannada through pictures, words and play.</h2>
+        <p>Choose a topic to begin. Progress is saved on this device.</p>
       </div>
 
       <div class="toolbar">
-        <select id="learningLanguageSelector" aria-label="Select learning language">
-          <option value="kannada">Kannada</option>
-          <option value="english">English</option>
-          <option value="hindi">Hindi</option>
-        </select>
         <input id="lessonSearch" type="search" placeholder="Search lessons...">
         <button id="resetProgress" class="small-btn">Reset Progress</button>
       </div>
@@ -139,7 +144,7 @@
             <p id="quizProgress">Question 1</p>
           </div>
           <div id="quizPicture" class="quiz-picture"></div>
-          <h3 id="quizPrompt">Choose the correct Kannada word</h3>
+          <h3>Choose the correct Kannada word</h3>
           <div id="quizOptions" class="quiz-options"></div>
           <p id="quizMessage" class="quiz-message"></p>
           <button id="nextQuestion" class="btn primary hidden">Next Question</button>
@@ -149,7 +154,7 @@
       <div id="memoryView" class="hidden">
         <button id="memoryBack" class="back-btn">← Back to topics</button>
         <h3 class="game-title">Memory Match</h3>
-        <p id="memoryNote" class="game-note">Match each picture with its Kannada word.</p>
+        <p class="game-note">Match each picture with its Kannada word.</p>
         <div id="memoryBoard" class="memory-board"></div>
       </div>
     </section>
@@ -177,8 +182,8 @@
         <h2>Play, practise and earn stars.</h2>
       </div>
       <div class="card-grid three">
-        <article class="game-card"><span>⭐</span><h3>Picture Quiz</h3><p id="quizCardDescription">Choose the correct Kannada word.</p><button id="startQuizCard" class="small-btn">Play Quiz</button></article>
-        <article class="game-card"><span>🧠</span><h3>Memory Match</h3><p id="memoryCardDescription">Match pictures with Kannada words.</p><button id="startMemory" class="small-btn">Play Memory</button></article>
+        <article class="game-card"><span>⭐</span><h3>Picture Quiz</h3><p>Choose the correct Kannada word.</p><button id="startQuizCard" class="small-btn">Play Quiz</button></article>
+        <article class="game-card"><span>🧠</span><h3>Memory Match</h3><p>Match pictures with Kannada words.</p><button id="startMemory" class="small-btn">Play Memory</button></article>
         <article class="game-card"><span>🏆</span><h3>Your Rewards</h3><p id="rewardText">Complete lessons and quizzes to earn badges.</p><button id="showRewards" class="small-btn">View Rewards</button></article>
       </div>
     </section>
@@ -214,6 +219,6 @@
     <p>© <span id="year"></span> RootCraft Academy</p>
   </footer>
 
-  <script src="script.js?v=2.2.0"></script>
+  <script src="script.js"></script>
 </body>
 </html>

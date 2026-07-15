@@ -77,20 +77,3 @@ Only multilingual learning support was added:
 - No server, Node.js or npm required
 
 The old service worker was removed to prevent outdated language data from remaining cached.
-
-
-## Header language selector update
-
-- Removed the `Kannada Learning` navigation tab.
-- Moved the Kannada / English / Hindi dropdown into the same header position.
-- Removed the duplicate dropdown from the learning toolbar.
-- Kept the existing design, layout, sections and content unchanged.
-
-
-## Dual language selector update
-
-- Header language selector retained.
-- Learning-section language selector restored.
-- Both selectors stay synchronized.
-- Changing either selector updates the same multilingual content.
-- Existing design, colours, layout, cards and sections remain unchanged.

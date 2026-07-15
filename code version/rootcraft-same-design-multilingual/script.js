@@ -306,6 +306,7 @@ function speak(word, fallback){
 
 function applyLanguageUi(){
   const pack = languagePack();
+  navLearningLink.textContent = pack.ui.nav;
   heroLearningButton.textContent = pack.ui.heroButton;
   learningEyebrow.textContent = pack.ui.eyebrow;
   learningHeading.textContent = pack.ui.heading;
@@ -316,7 +317,6 @@ function applyLanguageUi(){
   quizCardDescription.textContent = pack.ui.quizCard;
   memoryCardDescription.textContent = pack.ui.memoryCard;
   languageSelector.value = selectedLanguage;
-  learningLanguageSelector.value = selectedLanguage;
 }
 
 function renderLearningMenu(filter=""){
@@ -564,7 +564,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   languageSelector.value = selectedLanguage;
   languageSelector.onchange = e=>changeLanguage(e.target.value);
-  learningLanguageSelector.onchange = e=>changeLanguage(e.target.value);
   lessonSearch.oninput = e=>renderLearningMenu(e.target.value);
 
   resetProgress.onclick = ()=>{
