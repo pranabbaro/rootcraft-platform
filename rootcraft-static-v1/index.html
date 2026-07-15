@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RootCraft Academy</title>
+  <meta name="description" content="RootCraft Academy — crafting strong roots for bright futures through joyful learning, values and creativity.">
+  <meta name="theme-color" content="#1f5d42">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">
+      <span class="brand-icon">🌳</span>
+      <span><strong>RootCraft</strong><small>ACADEMY</small></span>
+    </a>
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav" class="main-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#learning">Kannada Learning</a>
+      <a href="#stories">Stories</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle" class="theme-toggle" title="Toggle theme">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Values • Curiosity • Future Skills</p>
+        <h1>Crafting strong roots for bright futures.</h1>
+        <p>
+          A joyful learning space where children grow through strong values,
+          languages, creativity, technology and discovery.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#learning">Start Learning Kannada</a>
+          <a class="btn secondary" href="#programs">Explore Programs</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="wordsLearned">0</strong><span>Words learned</span></div>
+          <div><strong id="starsEarned">0</strong><span>Stars earned</span></div>
+          <div><strong id="quizBest">0</strong><span>Best quiz score</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="sun"></div>
+        <div class="tree">🌳</div>
+        <span class="float-card f1">📚 Learn</span>
+        <span class="float-card f2">🎨 Create</span>
+        <span class="float-card f3">🚀 Grow</span>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Our Philosophy</p>
+        <h2>Every child begins with unlimited potential.</h2>
+        <p>
+          RootCraft combines strong foundations with the freedom to explore,
+          helping children become confident, compassionate and curious learners.
+        </p>
+      </div>
+
+      <div class="card-grid four">
+        <article class="info-card"><span>🌱</span><h3>Rooted in Values</h3><p>Kindness, integrity, empathy and respect.</p></article>
+        <article class="info-card"><span>📚</span><h3>Joyful Learning</h3><p>Stories, games, pictures and hands-on discovery.</p></article>
+        <article class="info-card"><span>🎨</span><h3>Creative Expression</h3><p>Art, music, imagination and communication.</p></article>
+        <article class="info-card"><span>💡</span><h3>Future Ready</h3><p>Critical thinking, coding and AI awareness.</p></article>
+      </div>
+    </section>
+
+    <section class="journey-section">
+      <div class="section-heading light">
+        <p class="eyebrow">The RootCraft Journey</p>
+        <h2>From strong roots to limitless possibilities.</h2>
+      </div>
+      <div class="journey">
+        <div><span>🌱</span><strong>Seed</strong><small>Curiosity begins</small></div>
+        <div><span>🌿</span><strong>Roots</strong><small>Values take shape</small></div>
+        <div><span>🌳</span><strong>Growth</strong><small>Knowledge expands</small></div>
+        <div><span>🎓</span><strong>Confidence</strong><small>Potential shines</small></div>
+        <div><span>🚀</span><strong>Future</strong><small>Dreams take flight</small></div>
+      </div>
+    </section>
+
+    <section id="programs" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Programs</p>
+        <h2>Learning pathways for every stage of growth.</h2>
+      </div>
+      <div class="card-grid four">
+        <article class="program-card"><span>🧸</span><small>Ages 2–4</small><h3>Early Roots</h3><p>Play, movement, stories and sensory exploration.</p></article>
+        <article class="program-card"><span>🌈</span><small>Ages 4–6</small><h3>Growing Roots</h3><p>Language, numbers, creativity and confidence.</p></article>
+        <article class="program-card"><span>📖</span><small>Primary Years</small><h3>RootCraft Primary</h3><p>Languages, maths, science, arts and communication.</p></article>
+        <article class="program-card"><span>🤖</span><small>Future Skills</small><h3>Explore & Build</h3><p>Coding, AI awareness, robotics and problem-solving.</p></article>
+      </div>
+    </section>
+
+    <section id="learning" class="section learning-section">
+      <div class="section-heading">
+        <p class="eyebrow">RootCraft Kannada</p>
+        <h2>Learn Kannada through pictures, words and play.</h2>
+        <p>Choose a topic to begin. Progress is saved on this device.</p>
+      </div>
+
+      <div class="toolbar">
+        <input id="lessonSearch" type="search" placeholder="Search lessons...">
+        <button id="resetProgress" class="small-btn">Reset Progress</button>
+      </div>
+
+      <div id="learningHome" class="learning-menu"></div>
+
+      <div id="lessonView" class="hidden">
+        <button id="lessonBack" class="back-btn">← Back to topics</button>
+        <h3 id="lessonTitle"></h3>
+        <div id="lessonCards" class="lesson-grid"></div>
+      </div>
+
+      <div id="quizView" class="hidden">
+        <button id="quizBack" class="back-btn">← Back to topics</button>
+        <div class="quiz-box">
+          <div class="quiz-top">
+            <p id="quizScore">Score: 0</p>
+            <p id="quizProgress">Question 1</p>
+          </div>
+          <div id="quizPicture" class="quiz-picture"></div>
+          <h3>Choose the correct Kannada word</h3>
+          <div id="quizOptions" class="quiz-options"></div>
+          <p id="quizMessage" class="quiz-message"></p>
+          <button id="nextQuestion" class="btn primary hidden">Next Question</button>
+        </div>
+      </div>
+
+      <div id="memoryView" class="hidden">
+        <button id="memoryBack" class="back-btn">← Back to topics</button>
+        <h3 class="game-title">Memory Match</h3>
+        <p class="game-note">Match each picture with its Kannada word.</p>
+        <div id="memoryBoard" class="memory-board"></div>
+      </div>
+    </section>
+
+    <section id="stories" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Story Corner</p>
+        <h2>Short stories for curious minds.</h2>
+      </div>
+      <div class="card-grid three">
+        <article class="story-card"><span>🐘</span><h3>The Kind Elephant</h3><p>A short moral story about kindness and helping others.</p><button data-story="elephant" class="small-btn story-btn">Read Story</button></article>
+        <article class="story-card"><span>🐦</span><h3>The Clever Bird</h3><p>A story about patience, ideas and creative problem-solving.</p><button data-story="bird" class="small-btn story-btn">Read Story</button></article>
+        <article class="story-card"><span>🌱</span><h3>The Little Seed</h3><p>A gentle story about growth, courage and believing in yourself.</p><button data-story="seed" class="small-btn story-btn">Read Story</button></article>
+      </div>
+      <div id="storyReader" class="story-reader hidden">
+        <button id="closeStory" class="back-btn">Close Story</button>
+        <h3 id="storyTitle"></h3>
+        <p id="storyText"></p>
+      </div>
+    </section>
+
+    <section id="games" class="section games-section">
+      <div class="section-heading">
+        <p class="eyebrow">Games & Rewards</p>
+        <h2>Play, practise and earn stars.</h2>
+      </div>
+      <div class="card-grid three">
+        <article class="game-card"><span>⭐</span><h3>Picture Quiz</h3><p>Choose the correct Kannada word.</p><button id="startQuizCard" class="small-btn">Play Quiz</button></article>
+        <article class="game-card"><span>🧠</span><h3>Memory Match</h3><p>Match pictures with Kannada words.</p><button id="startMemory" class="small-btn">Play Memory</button></article>
+        <article class="game-card"><span>🏆</span><h3>Your Rewards</h3><p id="rewardText">Complete lessons and quizzes to earn badges.</p><button id="showRewards" class="small-btn">View Rewards</button></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s build brighter futures together.</h2>
+        <p>This static form is ready for design review. Email sending can be added later.</p>
+      </div>
+      <div class="contact-card">
+        <div>
+          <h3>RootCraft Academy</h3>
+          <p>Crafting strong roots for bright futures.</p>
+          <p><strong>Email:</strong> hello@rootcraft.in</p>
+          <p><strong>Location:</strong> India</p>
+        </div>
+        <form>
+          <input type="text" placeholder="Your name">
+          <input type="email" placeholder="Your email">
+          <textarea placeholder="Your message"></textarea>
+          <button type="button" class="btn primary">Submit (Coming Soon)</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <footer>
+    <div class="brand footer-brand"><span class="brand-icon">🌳</span><span><strong>RootCraft</strong><small>ACADEMY</small></span></div>
+    <p>Crafting strong roots for bright futures.</p>
+    <p>© <span id="year"></span> RootCraft Academy</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
