@@ -1,4 +1,4 @@
-name: Deploy NovaKids to GitHub Pages
+name: Deploy RootCraft Academy to GitHub Pages
 on:
   push:
     branches: ["main"]

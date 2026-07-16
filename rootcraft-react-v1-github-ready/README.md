@@ -1,4 +1,4 @@
-# NovaKids React V1
+# RootCraft Academy Platform
 
 Serverless React + TypeScript learning platform.
 
@@ -19,7 +19,7 @@ npm run dev
 ## Push directly to GitHub
 ```bash
 git add .
-git commit -m "Add NovaKids React V1"
+git commit -m "Add RootCraft Academy React V1"
 git pull --rebase origin main
 git push origin main
 ```
@@ -27,4 +27,12 @@ git push origin main
 ## Enable GitHub Pages
 Repository → Settings → Pages → Build and deployment → GitHub Actions.
 
-For a custom domain such as novakids.in, keep `base: '/'` in vite.config.ts.
+For a custom domain such as rootcraftacademy.in, keep `base: '/'` in vite.config.ts.
+
+
+## Branding
+
+- Product: RootCraft Academy
+- Tagline: Growing Young Minds Through India's Languages
+- Mascot concept: Learning Tree
+- Deployment: Serverless React application on GitHub Pages
