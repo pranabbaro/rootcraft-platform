@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 name: Deploy RootCraft Academy to GitHub Pages
-=======
-name: Deploy RootCraft Academy
->>>>>>> e87a37d (Add attractive RootCraft Academy homepage)
 
 on:
   push:
@@ -16,11 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-<<<<<<< HEAD
   group: github-pages
-=======
-  group: "pages"
->>>>>>> e87a37d (Add attractive RootCraft Academy homepage)
   cancel-in-progress: true
 
 jobs:
@@ -31,10 +23,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup stable Node.js
         uses: actions/setup-node@v4
         with:
-<<<<<<< HEAD
           node-version: "20"
 
       - name: Remove incompatible lock file
@@ -45,13 +36,6 @@ jobs:
 
       - name: Ensure React TypeScript definitions
         run: npm install --save-dev @types/react @types/react-dom typescript
-=======
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
->>>>>>> e87a37d (Add attractive RootCraft Academy homepage)
 
       - name: Build application
         run: npm run build
@@ -73,10 +57,6 @@ jobs:
     needs: build
 
     steps:
-<<<<<<< HEAD
       - name: Deploy website
-=======
-      - name: Deploy to GitHub Pages
->>>>>>> e87a37d (Add attractive RootCraft Academy homepage)
         id: deployment
         uses: actions/deploy-pages@v4

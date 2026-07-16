@@ -76,3 +76,13 @@ The Vite base path is `/`, which is correct for a custom root domain.
 - Added popular-language cards and visual learning journey.
 - Existing lessons, stories, games and audio controls remain functional.
 - Mobile responsive and GitHub Pages ready.
+
+
+## Deployment correction included
+
+This package includes the previously working deployment corrections:
+
+- `tsconfig.app.json` explicitly loads `react` and `react-dom` types.
+- GitHub Actions uses Node.js 20.
+- The workflow removes the previous lock file before dependency installation.
+- React TypeScript definitions are explicitly installed before the build.
