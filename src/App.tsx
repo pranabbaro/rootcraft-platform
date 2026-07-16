@@ -31,13 +31,6 @@ const courses:Course[]=[
 function scrollToSection(id:string){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
 function speak(text:string,locale:string){if(!('speechSynthesis' in window)){alert('Speech is not supported on this device.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=locale;u.rate=.8;speechSynthesis.speak(u);}
 
-const greetings=[
-  {text:'ನಮಸ್ಕಾರ',className:'greeting green'},
-  {text:'नमस्ते',className:'greeting saffron'},
-  {text:'নমস্কাৰ',className:'greeting blue'},
-  {text:'வணக்கம்',className:'greeting coral'},
-  {text:'నమస్కారం',className:'greeting purple'}
-];
 
 function Header(){
   const[open,setOpen]=useState(false);
@@ -124,7 +117,6 @@ export default function App(){
         </div>
         <div className="hero-visual">
           <img src="/assets/india-language-hero.webp" alt="Children from different regions learning languages around a colourful map of India"/>
-          {greetings.map(g=><span key={g.text} className={g.className}>{g.text}</span>)}
         </div>
       </section>
 
