@@ -384,32 +384,103 @@ export default function App(){
         </div>
       </section>
 
-      <section id="languages" className="section language-section page-anchor">
+      <section id="languages" className="section state-first-section page-anchor">
         <div className="section-heading">
-          <span>Choose Your Language</span>
-          <h2>Begin your learning journey</h2>
-          <p>Start with a live course today. More Indian languages are coming next.</p>
+          <span>Explore India by State</span>
+          <h2>Discover language through place and culture</h2>
+          <p>
+            Choose a state to explore its language, festivals, food, stories and traditions.
+            State and language names below are matched to their correct regions.
+          </p>
         </div>
-        <div className="language-grid">
-          {courses.map(item=><article key={item.id} className="language-card">
-            <div className="language-icon">{item.icon}</div>
-            <h3>{item.nativeName}</h3>
-            <p>{item.name}</p>
-            <span className={item.available?'status live':'status soon'}>
-              {item.available?'Available now':'Coming soon'}
-            </span>
-            <div className="language-meta">
-              <small>{item.available?`${item.topics.length} topics`:'In development'}</small>
-              <small>{item.available?`${item.stories.length} stories`:'More content soon'}</small>
-            </div>
-            <button
-              type="button"
-              style={{background:item.color}}
-              onClick={()=>chooseCourse(item)}
-            >
-              {item.available?'Start Learning →':'Coming Soon'}
-            </button>
-          </article>)}
+
+        <div className="state-first-grid">
+          <article className="state-first-card assam-state">
+            <div className="state-first-icon">🦏</div>
+            <span>Assam</span>
+            <h3>অসমীয়া • Assamese</h3>
+            <p>Bihu, tea gardens, Kaziranga, silk traditions and vibrant folk culture.</p>
+            <ul>
+              <li>Festival: Bihu</li>
+              <li>Heritage: Kaziranga</li>
+              <li>Food: Assamese thali</li>
+            </ul>
+            <button type="button" onClick={()=>alert('Assamese course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-first-card karnataka-state featured-state-card">
+            <div className="state-first-icon">🏛️</div>
+            <span>Karnataka</span>
+            <h3>ಕನ್ನಡ • Kannada</h3>
+            <p>Hampi, Mysore, Yakshagana, classical music and a rich literary tradition.</p>
+            <ul>
+              <li>Festival: Mysuru Dasara</li>
+              <li>Heritage: Hampi</li>
+              <li>Food: Bisi bele bath</li>
+            </ul>
+            <button type="button" onClick={()=>chooseCourse(courses[0])}>Start Kannada Journey →</button>
+          </article>
+
+          <article className="state-first-card tamilnadu-state">
+            <div className="state-first-icon">🛕</div>
+            <span>Tamil Nadu</span>
+            <h3>தமிழ் • Tamil</h3>
+            <p>Pongal, temple architecture, Bharatanatyam and classical Tamil literature.</p>
+            <ul>
+              <li>Festival: Pongal</li>
+              <li>Heritage: Chola temples</li>
+              <li>Food: Dosa and sambar</li>
+            </ul>
+            <button type="button" onClick={()=>alert('Tamil course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-first-card punjab-state">
+            <div className="state-first-icon">🌾</div>
+            <span>Punjab</span>
+            <h3>ਪੰਜਾਬੀ • Punjabi</h3>
+            <p>Bhangra, harvest celebrations, folk music and warm hospitality.</p>
+            <ul>
+              <li>Festival: Vaisakhi</li>
+              <li>Culture: Bhangra</li>
+              <li>Food: Sarson da saag</li>
+            </ul>
+            <button type="button" onClick={()=>alert('Punjabi course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-first-card bengal-state">
+            <div className="state-first-icon">🎭</div>
+            <span>West Bengal</span>
+            <h3>বাংলা • Bengali</h3>
+            <p>Durga Puja, literature, music, theatre and a celebrated artistic heritage.</p>
+            <ul>
+              <li>Festival: Durga Puja</li>
+              <li>Culture: Baul music</li>
+              <li>Food: Mishti doi</li>
+            </ul>
+            <button type="button" onClick={()=>alert('Bengali course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-first-card maharashtra-state">
+            <div className="state-first-icon">🏰</div>
+            <span>Maharashtra</span>
+            <h3>मराठी • Marathi</h3>
+            <p>Forts, Ganesh Chaturthi, Lavani, theatre and a strong literary tradition.</p>
+            <ul>
+              <li>Festival: Ganesh Chaturthi</li>
+              <li>Heritage: Raigad Fort</li>
+              <li>Food: Puran poli</li>
+            </ul>
+            <button type="button" onClick={()=>alert('Marathi course is coming soon.')}>Coming Soon</button>
+          </article>
+        </div>
+
+        <div className="state-first-note">
+          <div>
+            <b>Prefer choosing by language?</b>
+            <p>Kannada, Hindi and English courses remain available through the Start Learning buttons and learning flow.</p>
+          </div>
+          <button className="outline" type="button" onClick={()=>chooseCourse(courses[1])}>Open Hindi</button>
+          <button className="outline" type="button" onClick={()=>chooseCourse(courses[2])}>Open English</button>
         </div>
       </section>
 
@@ -531,51 +602,6 @@ export default function App(){
         </div>
       </section>}
 
-      <section className="section explore-states-section">
-        <div className="section-heading">
-          <span>Explore India by State</span>
-          <h2>Discover language through place and culture</h2>
-          <p>Each state has its own language, stories, festivals, food and traditions.</p>
-        </div>
-
-        <div className="state-grid">
-          <article className="state-card assam-card">
-            <div className="state-visual">🦏</div>
-            <span>Assam</span>
-            <h3>অসমীয়া • Assamese</h3>
-            <p>Bihu, tea gardens, Kaziranga and vibrant folk traditions.</p>
-            <div className="state-tags"><span>Bihu</span><span>Kaziranga</span><span>Tea</span></div>
-            <button type="button" onClick={()=>alert('Assamese course is coming soon.')}>Coming Soon</button>
-          </article>
-
-          <article className="state-card karnataka-card">
-            <div className="state-visual">🏛️</div>
-            <span>Karnataka</span>
-            <h3>ಕನ್ನಡ • Kannada</h3>
-            <p>Hampi, Mysore, Yakshagana and a rich literary heritage.</p>
-            <div className="state-tags"><span>Hampi</span><span>Mysore</span><span>Yakshagana</span></div>
-            <button type="button" onClick={()=>chooseCourse(courses[0])}>Learn Kannada →</button>
-          </article>
-
-          <article className="state-card tamil-card">
-            <div className="state-visual">🛕</div>
-            <span>Tamil Nadu</span>
-            <h3>தமிழ் • Tamil</h3>
-            <p>Pongal, temple architecture, Bharatanatyam and classical literature.</p>
-            <div className="state-tags"><span>Pongal</span><span>Temples</span><span>Dance</span></div>
-            <button type="button" onClick={()=>alert('Tamil course is coming soon.')}>Coming Soon</button>
-          </article>
-
-          <article className="state-card punjab-card">
-            <div className="state-visual">🌾</div>
-            <span>Punjab</span>
-            <h3>ਪੰਜਾਬੀ • Punjabi</h3>
-            <p>Bhangra, harvest celebrations, folk music and warm hospitality.</p>
-            <div className="state-tags"><span>Bhangra</span><span>Harvest</span><span>Music</span></div>
-            <button type="button" onClick={()=>alert('Punjabi course is coming soon.')}>Coming Soon</button>
-          </article>
-        </div>
-      </section>
 
       <section className="section journey-section">
         <div className="section-heading">

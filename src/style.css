@@ -704,3 +704,107 @@ footer span,footer p{color:var(--muted);font-size:13px}
   .culture-module-hero{grid-template-columns:1fr;text-align:center}
   .culture-module-icon{margin:auto}
 }
+
+
+/* V13 state-first learning journey */
+.state-first-section{
+  background:linear-gradient(180deg,#fffdf8,#eef8f2)
+}
+.state-first-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+.state-first-card{
+  display:flex;
+  flex-direction:column;
+  min-height:430px;
+  padding:26px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  transition:transform .22s ease,box-shadow .22s ease
+}
+.state-first-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 58px rgba(69,49,20,.16)
+}
+.state-first-icon{
+  display:grid;
+  place-items:center;
+  width:78px;
+  height:78px;
+  margin-bottom:16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.78);
+  font-size:44px;
+  box-shadow:0 10px 22px rgba(64,48,18,.08)
+}
+.state-first-card>span{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.13em
+}
+.state-first-card h3{
+  margin:7px 0 10px;
+  font-size:23px
+}
+.state-first-card p{
+  color:var(--muted);
+  font-size:14px
+}
+.state-first-card ul{
+  flex:1;
+  margin:16px 0 20px;
+  padding-left:18px;
+  color:var(--navy);
+  font-size:13px
+}
+.state-first-card li{margin:7px 0}
+.state-first-card button{
+  align-self:flex-start;
+  border:0;
+  border-radius:999px;
+  padding:11px 16px;
+  background:#fff;
+  color:var(--green-dark);
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(49,40,23,.1)
+}
+.featured-state-card{
+  outline:3px solid rgba(19,138,82,.18)
+}
+.featured-state-card button{
+  background:var(--green);
+  color:#fff
+}
+.assam-state{background:linear-gradient(145deg,#e8f7ed,#ccebd5)}
+.karnataka-state{background:linear-gradient(145deg,#fff0d8,#ffd09a)}
+.tamilnadu-state{background:linear-gradient(145deg,#eee8ff,#d7c9fb)}
+.punjab-state{background:linear-gradient(145deg,#fff5c7,#f4df84)}
+.bengal-state{background:linear-gradient(145deg,#ffe8ee,#f7c4d1)}
+.maharashtra-state{background:linear-gradient(145deg,#e8f1ff,#c9dcf7)}
+
+.state-first-note{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:26px;
+  padding:20px 22px;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow)
+}
+.state-first-note>div{flex:1}
+.state-first-note b{color:var(--green);font-size:17px}
+.state-first-note p{color:var(--muted);font-size:13px}
+
+@media(max-width:1100px){
+  .state-first-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .state-first-grid{grid-template-columns:1fr}
+  .state-first-note{align-items:stretch;flex-direction:column}
+}

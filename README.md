@@ -113,3 +113,12 @@ This package includes the previously working deployment corrections:
 - Added dedicated modules for festivals, art, dance, music, heritage and food.
 - Added examples, culture vocabulary, audio and a quick activity.
 - Preserved all V11 design and deployment fixes.
+
+
+## V13 state-first discovery
+
+- Replaced the language catalogue with a state-first exploration journey.
+- Added correctly matched state and language pairs for Assam, Karnataka, Tamil Nadu, Punjab, West Bengal and Maharashtra.
+- Preserved the approved India map image without changing or moving its embedded labels.
+- Removed the duplicate state section.
+- Kept direct access to Hindi and English.
