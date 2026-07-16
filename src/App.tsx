@@ -314,7 +314,7 @@ export default function App(){
     :<>
       <main id="home" className="hero page-anchor">
         <div className="hero-copy">
-          <span className="eyebrow">🇮🇳 Made for India’s young learners</span>
+          <span className="eyebrow"><i className="mini-india-flag" aria-hidden="true"><b></b><b></b><b></b></i>Made for India’s young learners</span>
           <h1>Learn Every<br/><em>Indian Language</em></h1>
           <h2>One Nation. Many Languages.<br/>One Beautiful Learning Journey.</h2>
           <p>
@@ -676,13 +676,56 @@ export default function App(){
       </section>}
     </section>
 
-    <section className="section parent-section">
-      <div className="parent-copy"><span>Designed for Families</span><h2>Meaningful screen time for growing minds</h2><p>RootCraft Academy gives children a safe and focused way to build language skills while staying connected to family, identity and Indian culture.</p>
-      <div className="parent-points"><span>✓ Age-appropriate learning</span><span>✓ Advertisement-free experience</span><span>✓ Stories, games and pronunciation</span><span>✓ Works on desktop, tablet and mobile</span></div></div>
-      <div className="parent-visual"><div className="family-card">👨‍👩‍👧</div><b>Learn together</b><p>Parents and children can explore words, stories and traditions side by side.</p></div>
+    <section className="section why-rootcraft-section">
+      <div className="section-heading">
+        <span>Why RootCraft?</span>
+        <h2>Built for joyful, meaningful learning</h2>
+        <p>
+          RootCraft Academy combines Indian languages, stories, culture and play
+          in one safe learning experience for children and families.
+        </p>
+      </div>
+
+      <div className="why-rootcraft-grid">
+        <article>
+          <div className="why-rootcraft-icon">🌳</div>
+          <h3>Indian Languages</h3>
+          <p>Children explore mother tongues and regional languages through simple, structured lessons.</p>
+        </article>
+
+        <article>
+          <div className="why-rootcraft-icon">🎮</div>
+          <h3>Learning Through Play</h3>
+          <p>Games, quizzes and activities make practice enjoyable and easier to remember.</p>
+        </article>
+
+        <article>
+          <div className="why-rootcraft-icon">🎭</div>
+          <h3>Culture & Heritage</h3>
+          <p>Festivals, food, dance, music, art and stories bring each language to life.</p>
+        </article>
+
+        <article>
+          <div className="why-rootcraft-icon">📖</div>
+          <h3>Stories That Connect</h3>
+          <p>Age-appropriate stories help children build vocabulary while discovering Indian traditions.</p>
+        </article>
+
+        <article>
+          <div className="why-rootcraft-icon">👨‍👩‍👧</div>
+          <h3>Learn Together</h3>
+          <p>Parents and children can explore words, stories and culture side by side.</p>
+        </article>
+
+        <article>
+          <div className="why-rootcraft-icon">🛡️</div>
+          <h3>Safe & Ad-Free</h3>
+          <p>A focused, child-friendly environment without advertisements or unnecessary distractions.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="about" className="section about-india-section page-anchor">
+<section id="about" className="section about-india-section page-anchor">
       <div className="about-india-copy">
         <span>About India</span>
         <h2>One country, many languages and countless stories.</h2>
@@ -706,7 +749,11 @@ export default function App(){
       </div>
 
       <div className="about-india-panel">
-        <div className="about-india-icon">🇮🇳</div>
+        <div className="india-flag" role="img" aria-label="Indian national flag">
+          <span className="flag-saffron"></span>
+          <span className="flag-white"><i className="ashoka-chakra">✺</i></span>
+          <span className="flag-green"></span>
+        </div>
         <h3>Unity in Diversity</h3>
         <p>
           Every Indian language carries its own history, literature, music, humour and

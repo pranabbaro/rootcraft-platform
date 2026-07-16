@@ -130,3 +130,11 @@ This package includes the previously working deployment corrections:
 - Removed the separate Hindi/English action bar.
 - Hindi is presented as a North and Central India learning journey.
 - English is presented as an across-India learning journey.
+
+
+## V17 Why RootCraft and flag fix
+
+- Replaced the large family section with a six-card Why RootCraft section.
+- Added language, games, culture, stories, family-learning and safety benefits.
+- Replaced Indian flag emojis with CSS-rendered flags so browsers do not display the letters IN.
+- Preserved the About India section and all existing learning features.
