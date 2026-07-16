@@ -1,38 +1,78 @@
 # RootCraft Academy Platform
 
-Serverless React + TypeScript learning platform.
+Serverless React + TypeScript learning platform for Indian languages.
 
-## Features
-- Kannada, Hindi and English
-- Alphabet, numbers, animals and fruits
-- Mobile-friendly navigation and automatic lesson scrolling
-- Working stories with Read Aloud
-- Working Memory Match and Picture Quiz
-- GitHub Actions deployment to GitHub Pages
+## Run locally
 
-## Local run
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Push directly to GitHub
+## Production build
+
+```bash
+npm run build
+```
+
+## Deploy to GitHub Pages
+
+1. Copy **all files from this package directly into the repository root**.
+2. Do not upload the ZIP file or place the project inside another folder.
+3. In GitHub, open `Settings → Pages`.
+4. Set **Source** to `GitHub Actions`.
+5. Push to the `main` branch.
+
 ```bash
 git add .
-git commit -m "Add RootCraft Academy React V1"
+git commit -m "Deploy RootCraft Academy"
 git pull --rebase origin main
 git push origin main
 ```
 
-## Enable GitHub Pages
-Repository → Settings → Pages → Build and deployment → GitHub Actions.
+The included workflow installs dependencies, builds the Vite application, uploads `dist`, and deploys it automatically.
 
-For a custom domain such as rootcraftacademy.in, keep `base: '/'` in vite.config.ts.
+## Required repository-root structure
+
+```text
+.github/
+public/
+src/
+index.html
+package.json
+package-lock.json
+tsconfig.json
+vite.config.ts
+README.md
+```
+
+Do not keep previous static-site folders, downloaded ZIP files, or nested project folders in the repository root.
+
+## Custom domain
+
+The package includes:
+
+```text
+public/CNAME
+```
+
+with:
+
+```text
+rootcraftacademy.in
+```
+
+The Vite base path is `/`, which is correct for a custom root domain.
 
 
-## Branding
+## V3 Homepage redesign
 
-- Product: RootCraft Academy
-- Tagline: Growing Young Minds Through India's Languages
-- Mascot concept: Learning Tree
-- Deployment: Serverless React application on GitHub Pages
+- New premium Indian-language homepage.
+- Colourful India-map hero visual with animated multilingual greetings.
+- Removed the Trusted by Parents section.
+- Expanded Indian culture introduction.
+- Added cultural cards for dance, festivals, music, heritage and arts.
+- Added Explore India and featured Kannada section.
+- Added popular-language cards and visual learning journey.
+- Existing lessons, stories, games and audio controls remain functional.
+- Mobile responsive and GitHub Pages ready.

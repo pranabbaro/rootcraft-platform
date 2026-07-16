@@ -27,16 +27,183 @@ const courses:Course[]=[
 {id:'assamese',name:'Assamese',nativeName:'অসমীয়া',locale:'as-IN',color:'#ef4e91',icon:'🏡',available:false,topics:[],stories:[]}
 ];
 
-function scroll(id:string){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});} 
-function speak(text:string,locale:string){if(!('speechSynthesis' in window)){alert('Speech is not supported.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=locale;u.rate=.8;speechSynthesis.speak(u);}
 
-function Header(){const[open,setOpen]=useState(false);return <header className="topbar"><button className="brand" onClick={()=>scroll('home')}><span className="tree-logo">🌳</span><b>RootCraft</b><strong> Academy</strong><small>Growing Young Minds Through India&apos;s Languages</small></button><button className="menu" onClick={()=>setOpen(!open)}>☰</button><nav className={open?'open':''}>{['home','languages','stories','games','culture','about'].map(x=><button key={x} onClick={()=>{setOpen(false);scroll(x)}}>{x[0].toUpperCase()+x.slice(1)}</button>)}</nav><div className="header-actions"><button>Log In</button><button className="primary">Sign Up Free</button></div></header>}
+function scrollToSection(id:string){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+function speak(text:string,locale:string){if(!('speechSynthesis' in window)){alert('Speech is not supported on this device.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=locale;u.rate=.8;speechSynthesis.speak(u);}
 
-function Memory({items}:{items:Item[]}){const tiles=useMemo(()=>items.slice(0,4).flatMap(i=>[{id:i.id+'p',pair:i.id,value:i.picture},{id:i.id+'w',pair:i.id,value:i.word}]).sort(()=>Math.random()-.5),[items]);const[open,setOpen]=useState<string[]>([]);const[matched,setMatched]=useState<string[]>([]);function pick(t:{id:string,pair:string,value:string}){if(open.includes(t.id)||matched.includes(t.pair)||open.length===2)return;const n=[...open,t.id];setOpen(n);if(n.length===2){const a=tiles.find(x=>x.id===n[0]),b=tiles.find(x=>x.id===n[1]);if(a&&b&&a.pair===b.pair){setMatched(m=>[...m,a.pair]);setTimeout(()=>setOpen([]),300)}else setTimeout(()=>setOpen([]),700)}}return <div className="memory">{tiles.map(t=><button key={t.id} className={open.includes(t.id)||matched.includes(t.pair)?'show':''} onClick={()=>pick(t)}>{open.includes(t.id)||matched.includes(t.pair)?t.value:'?'}</button>)}</div>}
-function Quiz({items}:{items:Item[]}){const q=items[0];const opts=useMemo(()=>items.slice(0,4).map(i=>i.word).sort(()=>Math.random()-.5),[items]);const[s,setS]=useState<string|null>(null);return <div className="quiz"><div>{q.picture}</div><h3>Choose the correct word</h3><div className="answers">{opts.map(o=><button key={o} disabled={!!s} className={s?(o===q.word?'correct':s===o?'wrong':''):''} onClick={()=>setS(o)}>{o}</button>)}</div>{s&&<p>{s===q.word?'Correct! ⭐':`Answer: ${q.word}`}</p>}</div>}
+const greetings=[
+  {text:'ನಮಸ್ಕಾರ',className:'greeting green'},
+  {text:'नमस्ते',className:'greeting saffron'},
+  {text:'নমস্কাৰ',className:'greeting blue'},
+  {text:'வணக்கம்',className:'greeting coral'},
+  {text:'నమస్కారం',className:'greeting purple'}
+];
 
-export default function App(){const[course,setCourse]=useState<Course|null>(null);const[topic,setTopic]=useState<Topic|null>(null);const[story,setStory]=useState<Story|null>(null);const[game,setGame]=useState<'memory'|'quiz'|null>(null);const viewRef=useRef<HTMLElement>(null);useEffect(()=>{if(course||topic||story||game)viewRef.current?.scrollIntoView({behavior:'smooth',block:'start'})},[course,topic,story,game]);const active=course||courses[0];const allItems=active.topics.flatMap(t=>t.items);
-return <><Header/>{course&&topic?<section ref={viewRef} className="section learning"><button className="outline" onClick={()=>setTopic(null)}>← Back to Topics</button><h2>{topic.title}</h2><div className="lesson-grid">{topic.items.map(i=><article key={i.id}><div>{i.picture}</div><h3>{i.word}</h3><p>{i.meaning}</p><small>{i.example}</small><button className="primary" onClick={()=>speak(i.word,course.locale)}>🔊 Listen</button></article>)}</div></section>:course?<section ref={viewRef} className="section learning"><button className="outline" onClick={()=>setCourse(null)}>← Back to Languages</button><h2>{course.nativeName}</h2><p>Choose a topic to begin.</p><div className="topic-grid">{course.topics.map(t=><button key={t.id} onClick={()=>setTopic(t)}><span>{t.icon}</span><b>{t.title}</b><small>{t.description}</small></button>)}</div></section>:<><section id="home" className="hero"><div><span className="pill">🇮🇳 India's language-learning platform for kids</span><h1>Learn <em>Every</em><br/>Indian Language</h1><p>Fun, interactive learning through stories, games, pictures and joyful practice.</p><button className="primary large" onClick={()=>scroll('languages')}>🚀 Start Learning Now</button></div><div className="hero-art">🇮🇳<span>🌳</span></div></section><section id="culture" className="section culture"><h2>Every language is a story. Every child deserves to hear it.</h2><p>India has 22 constitutionally recognized Scheduled languages and hundreds of regional and tribal languages.</p></section><section id="languages" className="section"><h2>Choose your learning journey</h2><div className="language-grid">{courses.map(c=><article key={c.id}><div>{c.icon}</div><h3>{c.nativeName}</h3><p>{c.name}</p><button style={{background:c.color}} onClick={()=>c.available?setCourse(c):alert(`${c.name} is coming soon.`)}>{c.available?'Start Learning':'Coming Soon'}</button></article>)}</div></section></>}
-<section id="stories" className="section soft"><h2>Story Library — {active.name}</h2><div className="story-grid">{active.stories.map(s=><article key={s.id}><div>{s.icon}</div><h3>{s.title}</h3><p>{s.summary}</p><button className="outline" onClick={()=>setStory(s)}>Read Story</button></article>)}</div>{story&&<section ref={viewRef} className="panel"><button className="outline" onClick={()=>setStory(null)}>← Back</button><h3>{story.title}</h3><p>{story.text}</p><button className="primary" onClick={()=>speak(story.text,active.locale)}>🔊 Read Aloud</button></section>}</section>
-<section id="games" className="section"><h2>Games — {active.name}</h2><div className="game-grid"><article>🧠<h3>Memory Match</h3><button className="primary" onClick={()=>setGame('memory')}>Play</button></article><article>🎯<h3>Picture Quiz</h3><button className="primary" onClick={()=>setGame('quiz')}>Play</button></article></div>{game&&<section ref={viewRef} className="panel"><button className="outline" onClick={()=>setGame(null)}>← Back</button>{game==='memory'?<Memory items={allItems}/>:<Quiz items={allItems}/>}</section>}</section>
-<section id="about" className="section about"><h2>Helping children stay connected to language and culture</h2><p>RootCraft Academy is designed for children growing up across India and around the world.</p></section><footer>RootCraft Academy — Celebrating India's languages and cultures.</footer></>}
+function Header(){
+  const[open,setOpen]=useState(false);
+  return <header className="topbar">
+    <button className="brand" onClick={()=>scrollToSection('home')}>
+      <span className="tree-logo">🌳</span>
+      <span className="brand-copy"><b>RootCraft</b><strong> Academy</strong><small>Learn • Connect • Grow</small></span>
+    </button>
+    <button className="menu" aria-label="Open navigation" onClick={()=>setOpen(!open)}>☰</button>
+    <nav className={open?'open':''}>
+      {['home','languages','stories','games','culture','about'].map(x=>
+        <button key={x} onClick={()=>{setOpen(false);scrollToSection(x)}}>{x==='about'?'About India':x[0].toUpperCase()+x.slice(1)}</button>
+      )}
+    </nav>
+    <button className="primary header-start" onClick={()=>scrollToSection('languages')}>Start Learning →</button>
+  </header>
+}
+
+function Memory({items}:{items:Item[]}){
+  const tiles=useMemo(()=>items.slice(0,4).flatMap(i=>[
+    {id:i.id+'p',pair:i.id,value:i.picture},{id:i.id+'w',pair:i.id,value:i.word}
+  ]).sort(()=>Math.random()-.5),[items]);
+  const[open,setOpen]=useState<string[]>([]);
+  const[matched,setMatched]=useState<string[]>([]);
+  function pick(t:{id:string,pair:string,value:string}){
+    if(open.includes(t.id)||matched.includes(t.pair)||open.length===2)return;
+    const n=[...open,t.id];setOpen(n);
+    if(n.length===2){
+      const a=tiles.find(x=>x.id===n[0]),b=tiles.find(x=>x.id===n[1]);
+      if(a&&b&&a.pair===b.pair){setMatched(m=>[...m,a.pair]);setTimeout(()=>setOpen([]),300)}
+      else setTimeout(()=>setOpen([]),700);
+    }
+  }
+  return <div className="memory">{tiles.map(t=><button key={t.id} className={open.includes(t.id)||matched.includes(t.pair)?'show':''} onClick={()=>pick(t)}>{open.includes(t.id)||matched.includes(t.pair)?t.value:'?'}</button>)}</div>
+}
+
+function Quiz({items}:{items:Item[]}){
+  const q=items[0];
+  const opts=useMemo(()=>items.slice(0,4).map(i=>i.word).sort(()=>Math.random()-.5),[items]);
+  const[s,setS]=useState<string|null>(null);
+  if(!q)return <p>No quiz data available.</p>;
+  return <div className="quiz">
+    <div className="quiz-picture">{q.picture}</div><h3>Choose the correct word</h3>
+    <div className="answers">{opts.map(o=><button key={o} disabled={!!s} className={s?(o===q.word?'correct':s===o?'wrong':''):''} onClick={()=>setS(o)}>{o}</button>)}</div>
+    {s&&<p className="quiz-feedback">{s===q.word?'Correct! ⭐':`Answer: ${q.word}`}</p>}
+  </div>
+}
+
+export default function App(){
+  const[course,setCourse]=useState<Course|null>(null);
+  const[topic,setTopic]=useState<Topic|null>(null);
+  const[story,setStory]=useState<Story|null>(null);
+  const[game,setGame]=useState<'memory'|'quiz'|null>(null);
+  const viewRef=useRef<HTMLElement>(null);
+  useEffect(()=>{if(course||topic||story||game)viewRef.current?.scrollIntoView({behavior:'smooth',block:'start'})},[course,topic,story,game]);
+  const active=course||courses[0];
+  const allItems=active.topics.flatMap(t=>t.items);
+
+  return <><Header/>
+    {course&&topic?
+      <section ref={viewRef} className="section learning page-focus">
+        <button className="outline" onClick={()=>setTopic(null)}>← Back to Topics</button>
+        <div className="section-heading"><span>{course.nativeName}</span><h2>{topic.title}</h2><p>{topic.description}</p></div>
+        <div className="lesson-grid">{topic.items.map(i=><article key={i.id}><div className="lesson-picture">{i.picture}</div><h3>{i.word}</h3><p>{i.meaning}</p><small>{i.example}</small><button className="primary" onClick={()=>speak(i.word,course.locale)}>🔊 Listen</button></article>)}</div>
+      </section>
+    :course?
+      <section ref={viewRef} className="section learning page-focus">
+        <button className="outline" onClick={()=>setCourse(null)}>← Back to Languages</button>
+        <div className="section-heading"><span>{course.name} Learning</span><h2>{course.nativeName}</h2><p>Choose a topic and begin your journey.</p></div>
+        <div className="topic-grid">{course.topics.map(t=><button key={t.id} onClick={()=>setTopic(t)}><span>{t.icon}</span><b>{t.title}</b><small>{t.description}</small></button>)}</div>
+      </section>
+    :<>
+      <section id="home" className="hero">
+        <div className="hero-copy">
+          <span className="pill">🇮🇳 Made for India's young learners</span>
+          <h1>Learn Every<br/><em>Indian Language</em></h1>
+          <h2>One Country. Many Languages.<br/>One Learning Platform.</h2>
+          <p>A joyful way for children to explore Indian languages, stories, culture and traditions through interactive lessons, games and pronunciation practice.</p>
+          <div className="hero-actions">
+            <button className="primary large" onClick={()=>scrollToSection('languages')}>Start Learning →</button>
+            <button className="outline large" onClick={()=>scrollToSection('languages')}>Explore Languages</button>
+          </div>
+          <div className="safety-pills"><span>🛡️ Kid Friendly</span><span>✓ Simple Learning</span><span>🚫 Ad Free</span></div>
+        </div>
+        <div className="hero-visual">
+          <img src="/assets/india-language-hero.webp" alt="Children from different regions learning languages around a colourful map of India"/>
+          {greetings.map(g=><span key={g.text} className={g.className}>{g.text}</span>)}
+        </div>
+      </section>
+
+      <section className="impact-strip">
+        <article><span>🌍</span><b>22+</b><small>Scheduled Languages</small></article>
+        <article><span>👨‍👩‍👧‍👦</span><b>1.4 Billion+</b><small>People Connected</small></article>
+        <article><span>📚</span><b>Thousands</b><small>of Words</small></article>
+        <article><span>🎮</span><b>Interactive</b><small>Learning Games</small></article>
+        <article><span>📖</span><b>Engaging</b><small>Stories</small></article>
+        <article><span>🏆</span><b>Progress</b><small>& Rewards</small></article>
+      </section>
+
+      <section id="culture" className="section culture-section">
+        <div className="culture-copy">
+          <span>Our Indian Culture</span>
+          <h2>Many traditions. One shared heritage.</h2>
+          <p>India is one of the world's oldest civilizations, enriched by extraordinary diversity in languages, traditions, festivals, music, dance, art, food and storytelling. From the Himalayas to the coastal regions, every community carries a distinct identity and a valuable cultural legacy.</p>
+          <p>RootCraft Academy brings this heritage to life for children through language lessons, regional stories, games and cultural experiences that nurture curiosity, respect and pride.</p>
+          <button className="primary" onClick={()=>scrollToSection('languages')}>Explore Our Culture →</button>
+        </div>
+        <div className="culture-cards">
+          <article><div>💃</div><h3>Dance</h3><p>Classical and folk traditions</p></article>
+          <article><div>🎨</div><h3>Festivals</h3><p>Colours, celebrations and customs</p></article>
+          <article><div>🎶</div><h3>Music</h3><p>Rhythms from every region</p></article>
+          <article><div>🏛️</div><h3>Heritage</h3><p>Monuments and living history</p></article>
+          <article><div>🪷</div><h3>Art & Crafts</h3><p>Creative traditions passed through generations</p></article>
+        </div>
+      </section>
+
+      <section className="section explore-india">
+        <div className="explore-map">
+          <h2>Explore India</h2><p>Click a language card to discover its alphabet, words, stories and culture.</p>
+          <div className="mini-map">🇮🇳</div>
+        </div>
+        <article className="featured-state">
+          <span>Karnataka</span><h2>Kannada</h2><p>ಕನ್ನಡ</p><div className="state-facts"><b>45 Million+</b><small>Speakers</small></div>
+          <div className="state-icons"><span>ಅ<br/><small>Alphabet</small></span><span>📖<br/><small>Stories</small></span><span>🎭<br/><small>Culture</small></span></div>
+          <button className="primary" onClick={()=>setCourse(courses[0])}>Explore Kannada →</button>
+        </article>
+      </section>
+
+      <section id="languages" className="section language-section">
+        <div className="section-heading"><span>Popular Languages</span><h2>Choose your learning journey</h2><p>Begin with Kannada, Hindi or English. More Indian languages are being prepared.</p></div>
+        <div className="language-grid">{courses.map(c=><article key={c.id}>
+          <div className="language-character">{c.icon}</div><h3>{c.nativeName}</h3><p>{c.name}</p>
+          <span className={c.available?'available':'coming'}>{c.available?'Available Now':'Coming Soon'}</span>
+          <button style={{background:c.color}} onClick={()=>c.available?setCourse(c):alert(`${c.name} is coming soon.`)}>{c.available?'Start Learning →':'Coming Soon'}</button>
+        </article>)}</div>
+      </section>
+
+      <section className="journey section">
+        <div className="section-heading"><span>Your Learning Journey</span><h2>Learn one joyful step at a time</h2></div>
+        <div className="journey-row">
+          {[
+            ['🌐','Choose Language'],['🔤','Learn Alphabet'],['🧩','New Words'],['🎤','Pronunciation'],['📖','Stories'],['🎮','Games'],['❓','Quiz'],['🏅','Certificate']
+          ].map((x,i)=><div key={x[1]} className="journey-step"><span>{x[0]}</span><b>{x[1]}</b>{i<7&&<em>→</em>}</div>)}
+        </div>
+      </section>
+    </>}
+
+    <section id="stories" className="section soft">
+      <div className="section-heading"><span>Story Library</span><h2>Stories in {active.name}</h2><p>Read, listen and discover meaningful lessons.</p></div>
+      <div className="story-grid">{active.stories.map(s=><article key={s.id}><div>{s.icon}</div><h3>{s.title}</h3><p>{s.summary}</p><button className="outline" onClick={()=>setStory(s)}>Read Story</button></article>)}</div>
+      {story&&<section ref={viewRef} className="panel"><button className="outline" onClick={()=>setStory(null)}>← Back</button><h3>{story.title}</h3><p>{story.text}</p><button className="primary" onClick={()=>speak(story.text,active.locale)}>🔊 Read Aloud</button></section>}
+    </section>
+
+    <section id="games" className="section">
+      <div className="section-heading"><span>Learn Through Play</span><h2>Games in {active.name}</h2><p>Practice words while having fun.</p></div>
+      <div className="game-grid"><article><div>🧠</div><h3>Memory Match</h3><p>Match pictures with words.</p><button className="primary" onClick={()=>setGame('memory')}>Play Game</button></article><article><div>🎯</div><h3>Picture Quiz</h3><p>Choose the correct word.</p><button className="primary" onClick={()=>setGame('quiz')}>Play Game</button></article></div>
+      {game&&<section ref={viewRef} className="panel"><button className="outline" onClick={()=>setGame(null)}>← Back</button>{game==='memory'?<Memory items={allItems}/>:<Quiz items={allItems}/>}</section>}
+    </section>
+
+    <section id="about" className="benefits">
+      <article><span>🛡️</span><div><b>Safe & Kid Friendly</b><small>A focused, advertisement-free learning space.</small></div></article>
+      <article><span>📈</span><div><b>Track Progress</b><small>Celebrate lessons, words and milestones.</small></div></article>
+      <article><span>☁️</span><div><b>Learn Anywhere</b><small>A responsive experience for mobile and desktop.</small></div></article>
+      <article><span>⭐</span><div><b>Earn Rewards</b><small>Badges and stars encourage continued learning.</small></div></article>
+    </section>
+
+    <footer><div><b>🌳 RootCraft Academy</b><p>Celebrating every Indian language and culture.</p></div><div><strong>Explore</strong><span>Languages</span><span>Stories</span><span>Games</span><span>Culture</span></div><div><strong>Support</strong><span>Parents</span><span>Teachers</span><span>Contact</span></div><div><strong>Legal</strong><span>Privacy Policy</span><span>Terms of Use</span></div></footer>
+  </>;
+}
