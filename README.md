@@ -122,3 +122,11 @@ This package includes the previously working deployment corrections:
 - Preserved the approved India map image without changing or moving its embedded labels.
 - Removed the duplicate state section.
 - Kept direct access to Hindi and English.
+
+
+## V14 unified language cards
+
+- Hindi and English are now shown as full cards in the same grid.
+- Removed the separate Hindi/English action bar.
+- Hindi is presented as a North and Central India learning journey.
+- English is presented as an across-India learning journey.

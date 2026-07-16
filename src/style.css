@@ -787,24 +787,15 @@ footer span,footer p{color:var(--muted);font-size:13px}
 .bengal-state{background:linear-gradient(145deg,#ffe8ee,#f7c4d1)}
 .maharashtra-state{background:linear-gradient(145deg,#e8f1ff,#c9dcf7)}
 
-.state-first-note{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-top:26px;
-  padding:20px 22px;
-  border-radius:20px;
-  background:#fff;
-  box-shadow:var(--shadow)
-}
-.state-first-note>div{flex:1}
-.state-first-note b{color:var(--green);font-size:17px}
-.state-first-note p{color:var(--muted);font-size:13px}
 
 @media(max-width:1100px){
   .state-first-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
   .state-first-grid{grid-template-columns:1fr}
-  .state-first-note{align-items:stretch;flex-direction:column}
-}
+  }
+
+
+/* V14 unified language cards */
+.hindi-state{background:linear-gradient(145deg,#fff0df,#ffd3ae)}
+.english-state{background:linear-gradient(145deg,#e8f1ff,#c9defe)}

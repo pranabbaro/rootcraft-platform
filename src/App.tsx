@@ -472,16 +472,34 @@ export default function App(){
             </ul>
             <button type="button" onClick={()=>alert('Marathi course is coming soon.')}>Coming Soon</button>
           </article>
+
+          <article className="state-first-card hindi-state featured-state-card">
+            <div className="state-first-icon">🕌</div>
+            <span>North & Central India</span>
+            <h3>हिंदी • Hindi</h3>
+            <p>Explore one of India’s most widely spoken languages through stories, everyday words and cultural themes.</p>
+            <ul>
+              <li>Learning: Greetings and conversation</li>
+              <li>Stories: Folk tales and poems</li>
+              <li>Practice: Words, pronunciation and games</li>
+            </ul>
+            <button type="button" onClick={()=>chooseCourse(courses[1])}>Start Hindi Journey →</button>
+          </article>
+
+          <article className="state-first-card english-state featured-state-card">
+            <div className="state-first-icon">🏫</div>
+            <span>Across India</span>
+            <h3>English</h3>
+            <p>Build strong English foundations through simple vocabulary, stories, pronunciation and interactive activities.</p>
+            <ul>
+              <li>Learning: Alphabet and vocabulary</li>
+              <li>Stories: Reading and comprehension</li>
+              <li>Practice: Speaking, quizzes and games</li>
+            </ul>
+            <button type="button" onClick={()=>chooseCourse(courses[2])}>Start English Journey →</button>
+          </article>
         </div>
 
-        <div className="state-first-note">
-          <div>
-            <b>Prefer choosing by language?</b>
-            <p>Kannada, Hindi and English courses remain available through the Start Learning buttons and learning flow.</p>
-          </div>
-          <button className="outline" type="button" onClick={()=>chooseCourse(courses[1])}>Open Hindi</button>
-          <button className="outline" type="button" onClick={()=>chooseCourse(courses[2])}>Open English</button>
-        </div>
       </section>
 
       <section className="section play-section">
