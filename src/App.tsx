@@ -264,6 +264,10 @@ export default function App(){
             <span>✓ Simple Learning</span>
             <span>🚫 Ad Free</span>
           </div>
+          <div className="mascot-card">
+            <div className="mascot-avatar">🌳</div>
+            <div><b>Meet Vriksha</b><p>Your RootCraft guide—growing with every word you learn.</p></div>
+          </div>
         </div>
 
         <div className="map-card">
@@ -301,6 +305,15 @@ export default function App(){
         </div>
       </section>
 
+      <section className="section preview-section">
+        <div className="section-heading"><span>Try a Quick Lesson</span><h2>See how learning feels</h2><p>Tap the sound button and try your first Kannada word.</p></div>
+        <div className="lesson-preview-card">
+          <div className="preview-visual">🐘</div>
+          <div className="preview-copy"><span>Kannada • Animals</span><h3>ಆನೆ</h3><p>Elephant</p><small>ಆನೆ ದೊಡ್ಡ ಪ್ರಾಣಿ.</small></div>
+          <button className="primary" type="button" onClick={()=>speak('ಆನೆ','kn-IN')}>🔊 Listen</button>
+        </div>
+      </section>
+
       <section id="languages" className="section language-section page-anchor">
         <div className="section-heading">
           <span>Choose Your Language</span>
@@ -315,6 +328,10 @@ export default function App(){
             <span className={item.available?'status live':'status soon'}>
               {item.available?'Available now':'Coming soon'}
             </span>
+            <div className="language-meta">
+              <small>{item.available?`${item.topics.length} topics`:'In development'}</small>
+              <small>{item.available?`${item.stories.length} stories`:'More content soon'}</small>
+            </div>
             <button
               type="button"
               style={{background:item.color}}
@@ -428,6 +445,12 @@ export default function App(){
         <button className="outline" type="button" onClick={()=>setGame(null)}>← Back</button>
         {game==='memory'?<Memory items={allItems}/>:<Quiz items={allItems}/>}
       </section>}
+    </section>
+
+    <section className="section parent-section">
+      <div className="parent-copy"><span>Designed for Families</span><h2>Meaningful screen time for growing minds</h2><p>RootCraft Academy gives children a safe and focused way to build language skills while staying connected to family, identity and Indian culture.</p>
+      <div className="parent-points"><span>✓ Age-appropriate learning</span><span>✓ Advertisement-free experience</span><span>✓ Stories, games and pronunciation</span><span>✓ Works on desktop, tablet and mobile</span></div></div>
+      <div className="parent-visual"><div className="family-card">👨‍👩‍👧</div><b>Learn together</b><p>Parents and children can explore words, stories and traditions side by side.</p></div>
     </section>
 
     <section id="about" className="benefit-band page-anchor">
