@@ -373,13 +373,101 @@ export default function App(){
             encourage curiosity, respect and pride.
           </p>
         </div>
-        <div className="culture-grid">
-          <article><span>🪔</span><h3>Festivals</h3><p>Celebrations, customs and community traditions.</p></article>
-          <article><span>🎨</span><h3>Art & Crafts</h3><p>Regional painting, textiles and creative heritage.</p></article>
-          <article><span>💃</span><h3>Dance</h3><p>Classical and folk traditions from across India.</p></article>
-          <article><span>🥁</span><h3>Music</h3><p>Rhythms, instruments and songs from every region.</p></article>
-          <article><span>🏛️</span><h3>Heritage</h3><p>Monuments, history and living cultural traditions.</p></article>
-          <article><span>🍛</span><h3>Food</h3><p>Regional tastes, ingredients and shared family memories.</p></article>
+
+        <div className="culture-grid rich-culture-grid">
+          <article className="culture-card festival-card">
+            <div className="culture-icon">🪔</div>
+            <h3>Festivals</h3>
+            <p>Celebrate Diwali, Bihu, Pongal, Onam, Durga Puja and many more festivals that bring families and communities together.</p>
+            <div className="culture-tags"><span>Diwali</span><span>Bihu</span><span>Pongal</span></div>
+            <button type="button" onClick={()=>scrollToSection('stories')}>Explore Stories →</button>
+          </article>
+
+          <article className="culture-card art-card">
+            <div className="culture-icon">🎨</div>
+            <h3>Art & Crafts</h3>
+            <p>Discover Madhubani paintings, Warli art, Pattachitra, Kalamkari, Rangoli and beautiful handmade traditions.</p>
+            <div className="culture-tags"><span>Madhubani</span><span>Warli</span><span>Rangoli</span></div>
+            <button type="button" onClick={()=>scrollToSection('languages')}>Learn the Words →</button>
+          </article>
+
+          <article className="culture-card dance-card">
+            <div className="culture-icon">💃</div>
+            <h3>Dance</h3>
+            <p>Learn about Bharatanatyam, Kathak, Bihu, Garba, Yakshagana and other classical and folk dances.</p>
+            <div className="culture-tags"><span>Kathak</span><span>Bihu</span><span>Garba</span></div>
+            <button type="button" onClick={()=>scrollToSection('languages')}>Discover More →</button>
+          </article>
+
+          <article className="culture-card music-card">
+            <div className="culture-icon">🥁</div>
+            <h3>Music</h3>
+            <p>Explore Carnatic and Hindustani music, folk songs and instruments such as tabla, veena, flute and dhol.</p>
+            <div className="culture-tags"><span>Tabla</span><span>Veena</span><span>Dhol</span></div>
+            <button type="button" onClick={()=>scrollToSection('stories')}>Listen & Learn →</button>
+          </article>
+
+          <article className="culture-card heritage-card">
+            <div className="culture-icon">🏛️</div>
+            <h3>Heritage</h3>
+            <p>Travel through the Taj Mahal, Hampi, Konark Temple, Kaziranga and countless places that preserve India’s history.</p>
+            <div className="culture-tags"><span>Hampi</span><span>Konark</span><span>Kaziranga</span></div>
+            <button type="button" onClick={()=>scrollToSection('languages')}>Explore India →</button>
+          </article>
+
+          <article className="culture-card food-card">
+            <div className="culture-icon">🍛</div>
+            <h3>Food</h3>
+            <p>Discover India’s amazing cuisine—from Assamese thali and dosa to biryani, dhokla, momos and regional sweets.</p>
+            <div className="culture-tags"><span>Dosa</span><span>Biryani</span><span>Momos</span></div>
+            <button type="button" onClick={()=>scrollToSection('languages')}>Learn Food Words →</button>
+          </article>
+        </div>
+      </section>
+
+      <section className="section explore-states-section">
+        <div className="section-heading">
+          <span>Explore India by State</span>
+          <h2>Discover language through place and culture</h2>
+          <p>Each state has its own language, stories, festivals, food and traditions.</p>
+        </div>
+
+        <div className="state-grid">
+          <article className="state-card assam-card">
+            <div className="state-visual">🦏</div>
+            <span>Assam</span>
+            <h3>অসমীয়া • Assamese</h3>
+            <p>Bihu, tea gardens, Kaziranga and vibrant folk traditions.</p>
+            <div className="state-tags"><span>Bihu</span><span>Kaziranga</span><span>Tea</span></div>
+            <button type="button" onClick={()=>alert('Assamese course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-card karnataka-card">
+            <div className="state-visual">🏛️</div>
+            <span>Karnataka</span>
+            <h3>ಕನ್ನಡ • Kannada</h3>
+            <p>Hampi, Mysore, Yakshagana and a rich literary heritage.</p>
+            <div className="state-tags"><span>Hampi</span><span>Mysore</span><span>Yakshagana</span></div>
+            <button type="button" onClick={()=>chooseCourse(courses[0])}>Learn Kannada →</button>
+          </article>
+
+          <article className="state-card tamil-card">
+            <div className="state-visual">🛕</div>
+            <span>Tamil Nadu</span>
+            <h3>தமிழ் • Tamil</h3>
+            <p>Pongal, temple architecture, Bharatanatyam and classical literature.</p>
+            <div className="state-tags"><span>Pongal</span><span>Temples</span><span>Dance</span></div>
+            <button type="button" onClick={()=>alert('Tamil course is coming soon.')}>Coming Soon</button>
+          </article>
+
+          <article className="state-card punjab-card">
+            <div className="state-visual">🌾</div>
+            <span>Punjab</span>
+            <h3>ਪੰਜਾਬੀ • Punjabi</h3>
+            <p>Bhangra, harvest celebrations, folk music and warm hospitality.</p>
+            <div className="state-tags"><span>Bhangra</span><span>Harvest</span><span>Music</span></div>
+            <button type="button" onClick={()=>alert('Punjabi course is coming soon.')}>Coming Soon</button>
+          </article>
         </div>
       </section>
 

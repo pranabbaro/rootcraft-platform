@@ -97,3 +97,11 @@ This package includes the previously working deployment corrections:
 - Language catalogue, play modules and Indian culture section.
 - Existing lessons, stories, games and speech functions retained.
 - Correct TypeScript and GitHub Pages deployment configuration retained.
+
+
+## V11 culture expansion
+
+- Added detailed culture cards for festivals, art, dance, music, heritage and food.
+- Added examples such as Bihu, Madhubani, Yakshagana, Hampi and Assamese cuisine.
+- Added Explore India by State cards for Assam, Karnataka, Tamil Nadu and Punjab.
+- Preserved the V10 mascot, animations, lesson preview, map cleanup and deployment fixes.
