@@ -375,15 +375,6 @@ export default function App(){
         </div>
       </section>
 
-      <section className="section preview-section">
-        <div className="section-heading"><span>Try a Quick Lesson</span><h2>See how learning feels</h2><p>Tap the sound button and try your first Kannada word.</p></div>
-        <div className="lesson-preview-card">
-          <div className="preview-visual">🐘</div>
-          <div className="preview-copy"><span>Kannada • Animals</span><h3>ಆನೆ</h3><p>Elephant</p><small>ಆನೆ ದೊಡ್ಡ ಪ್ರಾಣಿ.</small></div>
-          <button className="primary" type="button" onClick={()=>speak('ಆನೆ','kn-IN')}>🔊 Listen</button>
-        </div>
-      </section>
-
       <section id="languages" className="section state-first-section page-anchor">
         <div className="section-heading">
           <span>Explore India by State</span>
