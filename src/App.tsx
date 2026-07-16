@@ -86,8 +86,8 @@ function Header(){
       )}
     </nav>
 
-    <button className="primary header-cta" type="button" onClick={()=>scrollToSection('languages')}>
-      Start Learning →
+    <button className="primary header-cta" type="button" onClick={()=>alert('Parent dashboard is coming soon.')}>
+      👨‍👩‍👧 Parent Dashboard
     </button>
   </header>
 }
@@ -178,6 +178,7 @@ export default function App(){
   const[story,setStory]=useState<Story|null>(null);
   const[game,setGame]=useState<'memory'|'quiz'|null>(null);
   const[cultureModule,setCultureModule]=useState<string|null>(null);
+  const[selectedExploreState,setSelectedExploreState]=useState('karnataka');
   const viewRef=useRef<HTMLElement>(null);
 
   useEffect(()=>{
@@ -188,6 +189,98 @@ export default function App(){
 
   const active=course||courses[0];
   const allItems=active.topics.flatMap(item=>item.items);
+
+  const exploreStates:{[key:string]:{
+    name:string;
+    nativeName:string;
+    language:string;
+    place:string;
+    festival:string;
+    food:string;
+    culture:string;
+    icon:string;
+    available:boolean;
+    courseIndex?:number;
+  }}={
+    karnataka:{
+      name:'Karnataka',
+      nativeName:'ಕರ್ನಾಟಕ',
+      language:'ಕನ್ನಡ (Kannada)',
+      place:'Hampi',
+      festival:'Mysuru Dasara',
+      food:'Bisi Bele Bath',
+      culture:'Yakshagana',
+      icon:'🏛️',
+      available:true,
+      courseIndex:0
+    },
+    assam:{
+      name:'Assam',
+      nativeName:'অসম',
+      language:'অসমীয়া (Assamese)',
+      place:'Kaziranga',
+      festival:'Bihu',
+      food:'Assamese Thali',
+      culture:'Bihu Dance',
+      icon:'🦏',
+      available:false
+    },
+    punjab:{
+      name:'Punjab',
+      nativeName:'ਪੰਜਾਬ',
+      language:'ਪੰਜਾਬੀ (Punjabi)',
+      place:'Golden Temple',
+      festival:'Vaisakhi',
+      food:'Sarson da Saag',
+      culture:'Bhangra',
+      icon:'🌾',
+      available:false
+    },
+    tamilnadu:{
+      name:'Tamil Nadu',
+      nativeName:'தமிழ்நாடு',
+      language:'தமிழ் (Tamil)',
+      place:'Brihadisvara Temple',
+      festival:'Pongal',
+      food:'Dosa and Sambar',
+      culture:'Bharatanatyam',
+      icon:'🛕',
+      available:false
+    },
+    westbengal:{
+      name:'West Bengal',
+      nativeName:'পশ্চিমবঙ্গ',
+      language:'বাংলা (Bengali)',
+      place:'Victoria Memorial',
+      festival:'Durga Puja',
+      food:'Mishti Doi',
+      culture:'Baul Music',
+      icon:'🎭',
+      available:false
+    },
+    kerala:{
+      name:'Kerala',
+      nativeName:'കേരളം',
+      language:'മലയാളം (Malayalam)',
+      place:'Alappuzha Backwaters',
+      festival:'Onam',
+      food:'Sadya',
+      culture:'Kathakali',
+      icon:'🌴',
+      available:false
+    }
+  };
+
+  const selectedState=exploreStates[selectedExploreState];
+
+  function startSelectedState(){
+    if(selectedState.available && selectedState.courseIndex!==undefined){
+      chooseCourse(courses[selectedState.courseIndex]);
+      return;
+    }
+    alert(`${selectedState.language} course is coming soon.`);
+  }
+
 
   const cultureModules:{[key:string]:{icon:string,title:string,intro:string,examples:string[],words:{term:string,meaning:string}[]}}={
     festivals:{
@@ -312,48 +405,103 @@ export default function App(){
         </div>
       </section>
     :<>
-      <main id="home" className="hero page-anchor">
-        <div className="hero-copy">
-          <span className="eyebrow"><i className="mini-india-flag" aria-hidden="true"><b></b><b></b><b></b></i>Made for India’s young learners</span>
+      <main id="home" className="map-hero page-anchor">
+        <section className="map-hero-copy">
+          <span className="eyebrow">
+            <i className="mini-india-flag" aria-hidden="true"><b></b><b></b><b></b></i>
+            Made for India’s young learners
+          </span>
+
           <h1>Learn Every<br/><em>Indian Language</em></h1>
-          <h2>One Nation. Many Languages.<br/>One Beautiful Learning Journey.</h2>
           <p>
-            Discover Indian languages, stories, festivals and culture through
-            interactive lessons, games and joyful practice designed for children.
+            Explore languages, stories, games and culture from every corner of India.
           </p>
-          <div className="hero-actions">
-            <button className="primary large" type="button" onClick={()=>scrollToSection('languages')}>
-              Start Learning →
+
+          <div className="map-hero-actions">
+            <button className="primary large" type="button" onClick={()=>scrollToSection('india-explorer')}>
+              🗺 Explore India Map
             </button>
             <button className="outline large" type="button" onClick={()=>scrollToSection('languages')}>
-              Explore Languages
+              🚀 Start Learning Now
             </button>
           </div>
-          <div className="hero-benefits">
-            <span>🛡️ Kid Friendly</span>
-            <span>✓ Simple Learning</span>
-            <span>🚫 Ad Free</span>
-          </div>
-          <div className="mascot-card">
-            <div className="mascot-avatar">🌳</div>
-            <div><b>Meet Vriksha</b><p>Your RootCraft guide—growing with every word you learn.</p></div>
-          </div>
-        </div>
 
-        <div className="map-card">
-          <img
-            src="/assets/india-language-hero.webp"
-            alt="Colourful map of India showing Indian languages"
-          />
-        </div>
+          <div className="map-hero-trust">
+            <div className="mini-css-flag" aria-hidden="true"><b></b><b></b><b></b></div>
+            <strong>Made for India’s<br/>young learners</strong>
+            <span>♡</span>
+          </div>
+        </section>
+
+        <section id="india-explorer" className="india-explorer" aria-label="Explore Indian states">
+          <div className="explorer-heading">
+            <span>Explore India</span>
+            <h2>Click a state to discover its language and culture</h2>
+          </div>
+
+          <div className="explorer-map">
+            <img
+              src="/assets/india-language-hero.webp"
+              alt="Map of India with regional language labels"
+            />
+
+            <div className="state-selector" aria-label="Choose a state">
+              {Object.entries(exploreStates).map(([key,state])=>
+                <button
+                  key={key}
+                  type="button"
+                  className={selectedExploreState===key?'active':''}
+                  onClick={()=>setSelectedExploreState(key)}
+                >
+                  <span>{state.icon}</span>{state.name}
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <aside className="state-detail-panel" aria-live="polite">
+          <div className="state-detail-cover">
+            <div className="state-detail-landmark">{selectedState.icon}</div>
+            <div>
+              <span>{selectedState.nativeName}</span>
+              <h2>{selectedState.name}</h2>
+            </div>
+          </div>
+
+          <div className="state-detail-list">
+            <article><span>💬</span><div><b>Language</b><p>{selectedState.language}</p></div></article>
+            <article><span>🏛️</span><div><b>Famous Place</b><p>{selectedState.place}</p></div></article>
+            <article><span>🪔</span><div><b>Festival</b><p>{selectedState.festival}</p></div></article>
+            <article><span>🍲</span><div><b>Food</b><p>{selectedState.food}</p></div></article>
+            <article><span>🎭</span><div><b>Culture</b><p>{selectedState.culture}</p></div></article>
+          </div>
+
+          <button className="state-start-button" type="button" onClick={startSelectedState}>
+            {selectedState.available?`Start Learning ${selectedState.language.split(' ')[0]}`:'Course Coming Soon'} →
+          </button>
+        </aside>
       </main>
 
-      <section className="trust-strip" aria-label="Platform highlights">
-        <article><span>📗</span><div><b>22+ Languages</b><small>Explore Indian languages</small></div></article>
-        <article><span>🪔</span><div><b>Stories & Culture</b><small>Discover rich traditions</small></div></article>
-        <article><span>🎮</span><div><b>Fun Learning</b><small>Games, quizzes and more</small></div></article>
-        <article><span>🛡️</span><div><b>Safe & Ad Free</b><small>A child-friendly space</small></div></article>
-        <article><span>🕘</span><div><b>Learn Anytime</b><small>Desktop, tablet or mobile</small></div></article>
+      <section className="home-feature-row" aria-label="RootCraft features">
+        <button type="button" onClick={()=>scrollToSection('games')}>
+          <span>🎮</span><div><b>Fun Games</b><small>Play and learn with exciting games</small></div>
+        </button>
+        <button type="button" onClick={()=>scrollToSection('stories')}>
+          <span>📖</span><div><b>Stories</b><small>Read stories in your favourite language</small></div>
+        </button>
+        <button type="button" onClick={()=>scrollToSection('culture')}>
+          <span>🎭</span><div><b>Culture</b><small>Explore festivals, food, art and traditions</small></div>
+        </button>
+        <button type="button" onClick={()=>alert('Achievements are coming soon.')}>
+          <span>🏆</span><div><b>Achievements</b><small>Earn badges and certificates</small></div>
+        </button>
+        <button type="button" onClick={()=>alert('The AI Tutor is coming soon.')}>
+          <span>🤖</span><div><b>AI Tutor</b><small>Practice with a smart learning friend</small></div>
+        </button>
+        <button type="button" onClick={()=>scrollToSection('about')}>
+          <span>👨‍👩‍👧</span><div><b>For Families</b><small>Designed for children and parents</small></div>
+        </button>
       </section>
 
       <section className="section why-section">

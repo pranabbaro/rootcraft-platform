@@ -138,3 +138,13 @@ This package includes the previously working deployment corrections:
 - Added language, games, culture, stories, family-learning and safety benefits.
 - Replaced Indian flag emojis with CSS-rendered flags so browsers do not display the letters IN.
 - Preserved the About India section and all existing learning features.
+
+
+## V18 interactive India-map homepage
+
+- Rebuilt the homepage around the India explorer concept.
+- Added a selectable state experience with matching state, language, festival, food, place and culture details.
+- State selectors are kept outside the map to avoid inaccurate or misaligned map labels.
+- Kannada starts the existing live course; other selected languages show Coming Soon.
+- Added feature shortcuts for games, stories, culture, achievements, AI tutor and families.
+- Preserved all existing learning, stories, games, culture modules, About India and deployment configuration.
