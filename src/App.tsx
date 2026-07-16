@@ -271,11 +271,6 @@ export default function App(){
             src="/assets/india-language-hero.webp"
             alt="Colourful map of India showing Indian languages"
           />
-          <div className="map-actions">
-            <button type="button" onClick={()=>chooseCourse(courses[0])}>ಕನ್ನಡ Kannada</button>
-            <button type="button" onClick={()=>chooseCourse(courses[1])}>हिंदी Hindi</button>
-            <button type="button" onClick={()=>chooseCourse(courses[2])}>English</button>
-          </div>
         </div>
       </main>
 

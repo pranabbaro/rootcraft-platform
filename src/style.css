@@ -128,9 +128,9 @@ button{font:inherit}
 }
 .map-card{
   position:relative;
-  padding:18px;
+  padding:12px;
   border-radius:32px;
-  background:#fff;
+  background:#fefaf4;
   box-shadow:var(--shadow);
   overflow:hidden
 }
@@ -138,26 +138,14 @@ button{font:inherit}
   display:block;
   width:100%;
   height:auto;
-  max-height:525px;
+  max-height:545px;
   object-fit:contain;
-  object-position:center
+  object-position:center;
+  background:#fefaf4;
+  border-radius:24px
 }
-.map-actions{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  padding-top:14px
-}
-.map-actions button{
-  border:1px solid #d9e7dd;
-  border-radius:999px;
-  padding:9px 13px;
-  background:#f7fcf8;
-  color:var(--green-dark);
-  font-weight:850;
-  cursor:pointer
-}
+
+
 
 .trust-strip{
   position:relative;
