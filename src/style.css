@@ -600,3 +600,107 @@ footer span,footer p{color:var(--muted);font-size:13px}
   .state-grid{grid-template-columns:1fr}
   .culture-card{min-height:auto}
 }
+
+
+/* V12 dedicated culture modules */
+.culture-module{
+  background:linear-gradient(135deg,#fff8e8,#eef9f2)
+}
+.culture-module-hero{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:22px;
+  align-items:center;
+  max-width:1000px;
+  margin:24px auto 34px;
+  padding:28px;
+  border-radius:26px;
+  background:#fff;
+  box-shadow:var(--shadow)
+}
+.culture-module-icon{
+  display:grid;
+  place-items:center;
+  width:110px;
+  height:110px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#fff0c8,#e6f7ec);
+  font-size:64px
+}
+.culture-module-hero span{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.14em
+}
+.culture-module-hero h2{
+  font-family:Georgia,serif;
+  font-size:clamp(2.4rem,4vw,4.5rem);
+  line-height:1.05;
+  margin:6px 0
+}
+.culture-module-hero p{
+  color:var(--muted);
+  font-size:17px
+}
+.culture-module-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:1100px;
+  margin:auto
+}
+.culture-module-grid article{
+  padding:26px;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:var(--shadow)
+}
+.culture-module-grid h3{
+  margin-bottom:15px;
+  font-size:22px
+}
+.culture-example-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px
+}
+.culture-example-list span{
+  padding:8px 11px;
+  border-radius:999px;
+  background:#eef8f2;
+  color:var(--green-dark);
+  font-size:12px;
+  font-weight:850
+}
+.culture-word-list{
+  display:grid;
+  gap:10px
+}
+.culture-word-list button{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:3px 12px;
+  align-items:center;
+  padding:12px 14px;
+  border:1px solid #e2ebe5;
+  border-radius:14px;
+  background:#fafdfb;
+  text-align:left;
+  cursor:pointer
+}
+.culture-word-list b{color:var(--green);font-size:19px}
+.culture-word-list small{grid-column:1;color:var(--muted)}
+.culture-word-list span{grid-column:2;grid-row:1/3;font-size:20px}
+.culture-module-grid article>p{
+  color:var(--muted);
+  margin-bottom:18px
+}
+@media(max-width:850px){
+  .culture-module-grid{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .culture-module-hero{grid-template-columns:1fr;text-align:center}
+  .culture-module-icon{margin:auto}
+}

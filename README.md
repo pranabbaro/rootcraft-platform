@@ -105,3 +105,11 @@ This package includes the previously working deployment corrections:
 - Added examples such as Bihu, Madhubani, Yakshagana, Hampi and Assamese cuisine.
 - Added Explore India by State cards for Assam, Karnataka, Tamil Nadu and Punjab.
 - Preserved the V10 mascot, animations, lesson preview, map cleanup and deployment fixes.
+
+
+## V12 culture modules
+
+- Culture buttons now open relevant in-page modules instead of jumping to unrelated sections.
+- Added dedicated modules for festivals, art, dance, music, heritage and food.
+- Added examples, culture vocabulary, audio and a quick activity.
+- Preserved all V11 design and deployment fixes.

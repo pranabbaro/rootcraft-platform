@@ -177,16 +177,86 @@ export default function App(){
   const[topic,setTopic]=useState<Topic|null>(null);
   const[story,setStory]=useState<Story|null>(null);
   const[game,setGame]=useState<'memory'|'quiz'|null>(null);
+  const[cultureModule,setCultureModule]=useState<string|null>(null);
   const viewRef=useRef<HTMLElement>(null);
 
   useEffect(()=>{
-    if(course||topic||story||game){
+    if(course||topic||story||game||cultureModule){
       viewRef.current?.scrollIntoView({behavior:'smooth',block:'start'});
     }
-  },[course,topic,story,game]);
+  },[course,topic,story,game,cultureModule]);
 
   const active=course||courses[0];
   const allItems=active.topics.flatMap(item=>item.items);
+
+  const cultureModules:{[key:string]:{icon:string,title:string,intro:string,examples:string[],words:{term:string,meaning:string}[]}}={
+    festivals:{
+      icon:'🪔',
+      title:'Festivals of India',
+      intro:'Discover how families celebrate seasons, stories, faith and community across India.',
+      examples:['Diwali','Bihu','Pongal','Onam','Durga Puja','Holi'],
+      words:[
+        {term:'ಉತ್ಸವ',meaning:'Festival in Kannada'},
+        {term:'त्योहार',meaning:'Festival in Hindi'},
+        {term:'ಉತ್ಸವದ ಶುಭಾಶಯಗಳು',meaning:'Festival greetings in Kannada'}
+      ]
+    },
+    art:{
+      icon:'🎨',
+      title:'Indian Art & Crafts',
+      intro:'Explore traditional painting, textiles, handmade crafts and patterns from different regions.',
+      examples:['Madhubani','Warli','Pattachitra','Kalamkari','Rangoli'],
+      words:[
+        {term:'ಕಲೆ',meaning:'Art in Kannada'},
+        {term:'कला',meaning:'Art in Hindi'},
+        {term:'ಚಿತ್ರ',meaning:'Picture in Kannada'}
+      ]
+    },
+    dance:{
+      icon:'💃',
+      title:'Dance Traditions',
+      intro:'Meet classical and folk dances that express stories, devotion, celebration and regional identity.',
+      examples:['Bharatanatyam','Kathak','Bihu','Garba','Yakshagana'],
+      words:[
+        {term:'ನೃತ್ಯ',meaning:'Dance in Kannada'},
+        {term:'नृत्य',meaning:'Dance in Hindi'},
+        {term:'ಕುಣಿತ',meaning:'Dance movement in Kannada'}
+      ]
+    },
+    music:{
+      icon:'🥁',
+      title:'Music of India',
+      intro:'Learn about melodies, rhythms, folk traditions and instruments used across the country.',
+      examples:['Carnatic','Hindustani','Tabla','Veena','Flute','Dhol'],
+      words:[
+        {term:'ಸಂಗೀತ',meaning:'Music in Kannada'},
+        {term:'संगीत',meaning:'Music in Hindi'},
+        {term:'ವಾದ್ಯ',meaning:'Musical instrument in Kannada'}
+      ]
+    },
+    heritage:{
+      icon:'🏛️',
+      title:'Indian Heritage',
+      intro:'Travel through monuments, landscapes and living traditions that preserve India’s history.',
+      examples:['Taj Mahal','Hampi','Konark Temple','Kaziranga','Ajanta'],
+      words:[
+        {term:'ಪಾರಂಪರ್ಯ',meaning:'Heritage in Kannada'},
+        {term:'विरासत',meaning:'Heritage in Hindi'},
+        {term:'ಇತಿಹಾಸ',meaning:'History in Kannada'}
+      ]
+    },
+    food:{
+      icon:'🍛',
+      title:'Food Across India',
+      intro:'Discover regional dishes, family recipes and food words from different parts of India.',
+      examples:['Assamese thali','Dosa','Biryani','Dhokla','Momos'],
+      words:[
+        {term:'ಆಹಾರ',meaning:'Food in Kannada'},
+        {term:'भोजन',meaning:'Food in Hindi'},
+        {term:'ರುಚಿ',meaning:'Taste in Kannada'}
+      ]
+    }
+  };
 
   const chooseCourse=(selected:Course)=>{
     if(!selected.available){
@@ -380,7 +450,7 @@ export default function App(){
             <h3>Festivals</h3>
             <p>Celebrate Diwali, Bihu, Pongal, Onam, Durga Puja and many more festivals that bring families and communities together.</p>
             <div className="culture-tags"><span>Diwali</span><span>Bihu</span><span>Pongal</span></div>
-            <button type="button" onClick={()=>scrollToSection('stories')}>Explore Stories →</button>
+            <button type="button" onClick={()=>setCultureModule('festivals')}>Explore Festivals →</button>
           </article>
 
           <article className="culture-card art-card">
@@ -388,7 +458,7 @@ export default function App(){
             <h3>Art & Crafts</h3>
             <p>Discover Madhubani paintings, Warli art, Pattachitra, Kalamkari, Rangoli and beautiful handmade traditions.</p>
             <div className="culture-tags"><span>Madhubani</span><span>Warli</span><span>Rangoli</span></div>
-            <button type="button" onClick={()=>scrollToSection('languages')}>Learn the Words →</button>
+            <button type="button" onClick={()=>setCultureModule('art')}>Explore Art →</button>
           </article>
 
           <article className="culture-card dance-card">
@@ -396,7 +466,7 @@ export default function App(){
             <h3>Dance</h3>
             <p>Learn about Bharatanatyam, Kathak, Bihu, Garba, Yakshagana and other classical and folk dances.</p>
             <div className="culture-tags"><span>Kathak</span><span>Bihu</span><span>Garba</span></div>
-            <button type="button" onClick={()=>scrollToSection('languages')}>Discover More →</button>
+            <button type="button" onClick={()=>setCultureModule('dance')}>Explore Dance →</button>
           </article>
 
           <article className="culture-card music-card">
@@ -404,7 +474,7 @@ export default function App(){
             <h3>Music</h3>
             <p>Explore Carnatic and Hindustani music, folk songs and instruments such as tabla, veena, flute and dhol.</p>
             <div className="culture-tags"><span>Tabla</span><span>Veena</span><span>Dhol</span></div>
-            <button type="button" onClick={()=>scrollToSection('stories')}>Listen & Learn →</button>
+            <button type="button" onClick={()=>setCultureModule('music')}>Explore Music →</button>
           </article>
 
           <article className="culture-card heritage-card">
@@ -412,7 +482,7 @@ export default function App(){
             <h3>Heritage</h3>
             <p>Travel through the Taj Mahal, Hampi, Konark Temple, Kaziranga and countless places that preserve India’s history.</p>
             <div className="culture-tags"><span>Hampi</span><span>Konark</span><span>Kaziranga</span></div>
-            <button type="button" onClick={()=>scrollToSection('languages')}>Explore India →</button>
+            <button type="button" onClick={()=>setCultureModule('heritage')}>Explore Heritage →</button>
           </article>
 
           <article className="culture-card food-card">
@@ -420,10 +490,46 @@ export default function App(){
             <h3>Food</h3>
             <p>Discover India’s amazing cuisine—from Assamese thali and dosa to biryani, dhokla, momos and regional sweets.</p>
             <div className="culture-tags"><span>Dosa</span><span>Biryani</span><span>Momos</span></div>
-            <button type="button" onClick={()=>scrollToSection('languages')}>Learn Food Words →</button>
+            <button type="button" onClick={()=>setCultureModule('food')}>Explore Food →</button>
           </article>
         </div>
       </section>
+
+      {cultureModule&&<section ref={viewRef} className="section culture-module page-anchor">
+        <button className="outline" type="button" onClick={()=>setCultureModule(null)}>← Back to Culture</button>
+        <div className="culture-module-hero">
+          <div className="culture-module-icon">{cultureModules[cultureModule].icon}</div>
+          <div>
+            <span>Culture Explorer</span>
+            <h2>{cultureModules[cultureModule].title}</h2>
+            <p>{cultureModules[cultureModule].intro}</p>
+          </div>
+        </div>
+
+        <div className="culture-module-grid">
+          <article>
+            <h3>Discover</h3>
+            <div className="culture-example-list">
+              {cultureModules[cultureModule].examples.map(item=><span key={item}>{item}</span>)}
+            </div>
+          </article>
+
+          <article>
+            <h3>Learn the Words</h3>
+            <div className="culture-word-list">
+              {cultureModules[cultureModule].words.map(item=><button key={item.term} type="button" onClick={()=>speak(item.term,'kn-IN')}>
+                <b>{item.term}</b><small>{item.meaning}</small><span>🔊</span>
+              </button>)}
+            </div>
+          </article>
+
+          <article>
+            <h3>Try a Quick Activity</h3>
+            <p>Choose one example and say it aloud. Then share one thing you already know about it.</p>
+            <button className="primary" type="button" onClick={()=>alert('Great job exploring Indian culture! ⭐')}>Complete Activity</button>
+          </article>
+        </div>
+      </section>}
 
       <section className="section explore-states-section">
         <div className="section-heading">
