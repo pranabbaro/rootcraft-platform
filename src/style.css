@@ -794,3 +794,93 @@ footer span,footer p{color:var(--muted);font-size:13px}
 /* V14 unified language cards */
 .hindi-state{background:linear-gradient(145deg,#fff0df,#ffd3ae)}
 .english-state{background:linear-gradient(145deg,#e8f1ff,#c9defe)}
+
+
+/* V16 About India section */
+.about-india-section{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:38px;
+  align-items:center;
+  background:linear-gradient(135deg,#fff9e8,#eef8f2)
+}
+.about-india-copy>span{
+  color:var(--green);
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.14em
+}
+.about-india-copy h2{
+  font-family:Georgia,serif;
+  font-size:clamp(2.5rem,4.5vw,4.5rem);
+  line-height:1.06;
+  margin:10px 0 16px
+}
+.about-india-copy>p{
+  color:var(--muted);
+  font-size:17px;
+  margin-bottom:14px
+}
+.about-india-highlights{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:24px
+}
+.about-india-highlights article{
+  padding:16px 12px;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(69,49,20,.08);
+  text-align:center
+}
+.about-india-highlights b{
+  display:block;
+  color:var(--green);
+  font-size:25px
+}
+.about-india-highlights span{
+  display:block;
+  color:var(--muted);
+  font-size:11px
+}
+.about-india-panel{
+  padding:32px;
+  border-radius:28px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  text-align:center
+}
+.about-india-icon{
+  font-size:82px;
+  margin-bottom:8px
+}
+.about-india-panel h3{
+  color:var(--green);
+  font-size:28px
+}
+.about-india-panel>p{
+  color:var(--muted);
+  margin:12px 0 20px
+}
+.about-india-values{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:22px
+}
+.about-india-values span{
+  padding:11px 12px;
+  border-radius:14px;
+  background:#f4faf6;
+  color:var(--green-dark);
+  font-size:12px;
+  font-weight:850
+}
+@media(max-width:850px){
+  .about-india-section{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .about-india-highlights,.about-india-values{grid-template-columns:1fr}
+}

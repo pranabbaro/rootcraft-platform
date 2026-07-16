@@ -682,7 +682,52 @@ export default function App(){
       <div className="parent-visual"><div className="family-card">👨‍👩‍👧</div><b>Learn together</b><p>Parents and children can explore words, stories and traditions side by side.</p></div>
     </section>
 
-    <section id="about" className="benefit-band page-anchor">
+    <section id="about" className="section about-india-section page-anchor">
+      <div className="about-india-copy">
+        <span>About India</span>
+        <h2>One country, many languages and countless stories.</h2>
+        <p>
+          India is home to extraordinary linguistic and cultural diversity. Across its
+          states and regions, children grow up hearing different languages, celebrating
+          different festivals, enjoying unique food traditions and sharing stories passed
+          through generations.
+        </p>
+        <p>
+          RootCraft Academy helps children explore this diversity in a simple and joyful
+          way—through language lessons, stories, games, culture and discovery.
+        </p>
+
+        <div className="about-india-highlights">
+          <article><b>22+</b><span>Scheduled languages</span></article>
+          <article><b>28</b><span>States</span></article>
+          <article><b>8</b><span>Union territories</span></article>
+          <article><b>1</b><span>Shared national journey</span></article>
+        </div>
+      </div>
+
+      <div className="about-india-panel">
+        <div className="about-india-icon">🇮🇳</div>
+        <h3>Unity in Diversity</h3>
+        <p>
+          Every Indian language carries its own history, literature, music, humour and
+          identity. Learning a language is also a way of understanding the people and
+          culture connected to it.
+        </p>
+
+        <div className="about-india-values">
+          <span>Respect every language</span>
+          <span>Celebrate every culture</span>
+          <span>Learn with curiosity</span>
+          <span>Grow together</span>
+        </div>
+
+        <button className="primary" type="button" onClick={()=>scrollToSection('languages')}>
+          Explore India →
+        </button>
+      </div>
+    </section>
+
+    <section className="benefit-band page-anchor">
       <article><span>🛡️</span><div><b>Safe & Kid Friendly</b><small>A focused, advertisement-free learning space.</small></div></article>
       <article><span>📈</span><div><b>Track Progress</b><small>Celebrate lessons, words and milestones.</small></div></article>
       <article><span>📱</span><div><b>Learn Anywhere</b><small>Responsive on desktop, tablet and mobile.</small></div></article>
