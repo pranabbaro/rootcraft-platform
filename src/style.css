@@ -1067,26 +1067,6 @@ footer span,footer p{color:var(--muted);font-size:13px}
 .india-explorer{
   min-width:0
 }
-.explorer-heading{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  margin:0 0 8px 38%
-}
-.explorer-heading>span{
-  color:var(--green);
-  font-size:13px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.13em;
-  white-space:nowrap
-}
-.explorer-heading h2{
-  max-width:330px;
-  font-family:Georgia,serif;
-  font-size:24px;
-  line-height:1.15
-}
 .explorer-map{
   position:relative;
   padding:10px;
@@ -1292,11 +1272,6 @@ footer span,footer p{color:var(--muted);font-size:13px}
   .map-hero-trust{
     justify-content:center
   }
-  .explorer-heading{
-    justify-content:center;
-    margin:0 0 12px;
-    text-align:left
-  }
   .state-detail-panel{
     display:block
   }
@@ -1310,13 +1285,6 @@ footer span,footer p{color:var(--muted);font-size:13px}
 @media(max-width:600px){
   .map-hero-copy h1{
     font-size:3.15rem
-  }
-  .explorer-heading{
-    display:block;
-    text-align:center
-  }
-  .explorer-heading h2{
-    margin:7px auto 0
   }
   .state-selector{
     display:grid;
@@ -1346,3 +1314,6 @@ footer span,footer p{color:var(--muted);font-size:13px}
 @media(max-width:1250px){.state-browser-results{grid-template-columns:repeat(4,1fr);max-height:260px}}
 @media(max-width:850px){.state-browser-results{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.state-browser-controls{grid-template-columns:1fr}.state-browser-results{grid-template-columns:repeat(2,1fr);max-height:310px}}
+
+.india-explorer{align-self:start}
+.explorer-map{margin-top:0}

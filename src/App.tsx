@@ -400,11 +400,6 @@ export default function App(){
         </section>
 
         <section id="india-explorer" className="india-explorer" aria-label="Explore Indian states">
-          <div className="explorer-heading">
-            <span>Explore India</span>
-            <h2>Click a state to discover its language and culture</h2>
-          </div>
-
           <div className="explorer-map">
             <img
               src="/assets/india-language-hero.webp"
