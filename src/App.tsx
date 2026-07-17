@@ -406,22 +406,57 @@ export default function App(){
           </div>
 
           <div className="map-hero-trust">
-            <div className="family-illustration" aria-hidden="true">
-              <svg viewBox="0 0 150 90">
-                <circle cx="48" cy="28" r="18" fill="#f1b17f"/>
-                <path d="M31 28c0-14 10-22 20-22 10 0 18 7 18 19-8-8-19-9-38 3z" fill="#2d2a2a"/>
-                <path d="M29 77c2-24 10-33 25-33 15 0 24 10 25 33z" fill="#f3a83b"/>
-                <circle cx="102" cy="29" r="18" fill="#d99867"/>
-                <path d="M84 27c2-12 9-19 20-19 10 0 18 8 18 20-10-7-22-8-38-1z" fill="#1f1f1f"/>
-                <path d="M81 78c2-23 10-33 24-33 15 0 24 10 26 33z" fill="#2aa06a"/>
-                <rect x="55" y="51" width="41" height="29" rx="4" fill="#e04f4f"/>
-                <path d="M75 51v29" stroke="#fff4d8" strokeWidth="2"/>
-                <circle cx="42" cy="29" r="2" fill="#2d2a2a"/>
-                <circle cx="54" cy="29" r="2" fill="#2d2a2a"/>
-                <path d="M43 36c3 3 8 3 11 0" stroke="#8e4d38" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                <circle cx="96" cy="29" r="2" fill="#1f1f1f"/>
-                <circle cx="108" cy="29" r="2" fill="#1f1f1f"/>
-                <path d="M97 36c3 3 8 3 11 0" stroke="#7d4432" strokeWidth="2" fill="none" strokeLinecap="round"/>
+            <div className="family-illustration premium-kids" aria-hidden="true">
+              <svg viewBox="0 0 260 120">
+                <defs>
+                  <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#fff7de"/>
+                    <stop offset="100%" stopColor="#eef8f1"/>
+                  </linearGradient>
+                  <linearGradient id="ground" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#9fd070"/>
+                    <stop offset="100%" stopColor="#5ca95c"/>
+                  </linearGradient>
+                </defs>
+
+                <rect x="1" y="1" width="258" height="118" rx="22" fill="url(#sky)"/>
+
+                <path d="M0 98c28-12 52-10 78 0 33 13 70 8 104-2 29-8 54-5 78 5v19H0z" fill="url(#ground)"/>
+
+                <g opacity=".95">
+                  <path d="M148 87h24V54h-24z" fill="#d7a24f"/>
+                  <path d="M144 54h32l-16-16z" fill="#e5b85f"/>
+                  <path d="M154 87V63h12v24" fill="#8c623f"/>
+                  <path d="M188 89h20V61h-20z" fill="#d98f4f"/>
+                  <path d="M184 61h28l-14-14z" fill="#efb95c"/>
+                  <path d="M214 91h18V67h-18z" fill="#c98a52"/>
+                  <path d="M211 67h24l-12-12z" fill="#ecb76f"/>
+                  <path d="M126 92h16V66h-16z" fill="#d5b06d"/>
+                  <path d="M123 66h22l-11-11z" fill="#f0ce83"/>
+                </g>
+
+                <g transform="translate(18 18)">
+                  <circle cx="42" cy="27" r="18" fill="#efb17f"/>
+                  <path d="M24 27c0-15 10-24 21-24 12 0 20 8 20 21-8-8-20-10-41 3z" fill="#2d2a2a"/>
+                  <path d="M23 84c2-25 11-37 27-37 16 0 26 11 28 37z" fill="#f3a83b"/>
+                  <circle cx="36" cy="28" r="2.2" fill="#2d2a2a"/>
+                  <circle cx="49" cy="28" r="2.2" fill="#2d2a2a"/>
+                  <path d="M37 36c3 3 9 3 12 0" stroke="#8e4d38" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  <rect x="44" y="58" width="36" height="25" rx="4" fill="#4f7fd8"/>
+                  <path d="M62 58v25" stroke="#fff" strokeWidth="1.8"/>
+
+                  <circle cx="96" cy="28" r="17" fill="#d99967"/>
+                  <path d="M80 27c2-13 10-21 21-21 11 0 19 8 19 21-10-8-22-9-40 0z" fill="#1e1e1e"/>
+                  <path d="M76 84c3-24 11-36 26-36 16 0 26 12 29 36z" fill="#2aa06a"/>
+                  <circle cx="91" cy="29" r="2.2" fill="#1f1f1f"/>
+                  <circle cx="103" cy="29" r="2.2" fill="#1f1f1f"/>
+                  <path d="M92 36c3 3 8 3 11 0" stroke="#7d4432" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  <rect x="66" y="59" width="38" height="25" rx="4" fill="#d94e4e"/>
+                  <path d="M85 59v25" stroke="#fff4d8" strokeWidth="1.8"/>
+                </g>
+
+                <circle cx="239" cy="18" r="4" fill="#f2a13d"/>
+                <path d="M236 18h6M239 15v6" stroke="#f2a13d" strokeWidth="1.5"/>
               </svg>
             </div>
             <strong>Made for India’s<br/>young learners</strong>
