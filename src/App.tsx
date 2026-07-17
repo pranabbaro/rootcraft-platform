@@ -179,6 +179,8 @@ export default function App(){
   const[game,setGame]=useState<'memory'|'quiz'|null>(null);
   const[cultureModule,setCultureModule]=useState<string|null>(null);
   const[selectedExploreState,setSelectedExploreState]=useState('karnataka');
+  const[stateSearch,setStateSearch]=useState('');
+  const[selectedRegion,setSelectedRegion]=useState('All');
   const viewRef=useRef<HTMLElement>(null);
 
   useEffect(()=>{
@@ -191,85 +193,49 @@ export default function App(){
   const allItems=active.topics.flatMap(item=>item.items);
 
   const exploreStates:{[key:string]:{
-    name:string;
-    nativeName:string;
-    language:string;
-    place:string;
-    festival:string;
-    food:string;
-    culture:string;
-    icon:string;
-    available:boolean;
-    courseIndex?:number;
+    name:string; nativeName:string; language:string; place:string; festival:string;
+    food:string; culture:string; icon:string; available:boolean; region:string; courseIndex?:number;
   }}={
-    karnataka:{
-      name:'Karnataka',
-      nativeName:'ಕರ್ನಾಟಕ',
-      language:'ಕನ್ನಡ (Kannada)',
-      place:'Hampi',
-      festival:'Mysuru Dasara',
-      food:'Bisi Bele Bath',
-      culture:'Yakshagana',
-      icon:'🏛️',
-      available:true,
-      courseIndex:0
-    },
-    assam:{
-      name:'Assam',
-      nativeName:'অসম',
-      language:'অসমীয়া (Assamese)',
-      place:'Kaziranga',
-      festival:'Bihu',
-      food:'Assamese Thali',
-      culture:'Bihu Dance',
-      icon:'🦏',
-      available:false
-    },
-    punjab:{
-      name:'Punjab',
-      nativeName:'ਪੰਜਾਬ',
-      language:'ਪੰਜਾਬੀ (Punjabi)',
-      place:'Golden Temple',
-      festival:'Vaisakhi',
-      food:'Sarson da Saag',
-      culture:'Bhangra',
-      icon:'🌾',
-      available:false
-    },
-    tamilnadu:{
-      name:'Tamil Nadu',
-      nativeName:'தமிழ்நாடு',
-      language:'தமிழ் (Tamil)',
-      place:'Brihadisvara Temple',
-      festival:'Pongal',
-      food:'Dosa and Sambar',
-      culture:'Bharatanatyam',
-      icon:'🛕',
-      available:false
-    },
-    westbengal:{
-      name:'West Bengal',
-      nativeName:'পশ্চিমবঙ্গ',
-      language:'বাংলা (Bengali)',
-      place:'Victoria Memorial',
-      festival:'Durga Puja',
-      food:'Mishti Doi',
-      culture:'Baul Music',
-      icon:'🎭',
-      available:false
-    },
-    kerala:{
-      name:'Kerala',
-      nativeName:'കേരളം',
-      language:'മലയാളം (Malayalam)',
-      place:'Alappuzha Backwaters',
-      festival:'Onam',
-      food:'Sadya',
-      culture:'Kathakali',
-      icon:'🌴',
-      available:false
-    }
+    assam:{name:'Assam',nativeName:'অসম',language:'অসমীয়া (Assamese)',place:'Kaziranga',festival:'Bihu',food:'Assamese Thali',culture:'Bihu Dance',icon:'🦏',available:false,region:'North-East'},
+    karnataka:{name:'Karnataka',nativeName:'ಕರ್ನಾಟಕ',language:'ಕನ್ನಡ (Kannada)',place:'Hampi',festival:'Mysuru Dasara',food:'Bisi Bele Bath',culture:'Yakshagana',icon:'🏛️',available:true,region:'South',courseIndex:0},
+    tamilnadu:{name:'Tamil Nadu',nativeName:'தமிழ்நாடு',language:'தமிழ் (Tamil)',place:'Brihadisvara Temple',festival:'Pongal',food:'Dosa and Sambar',culture:'Bharatanatyam',icon:'🛕',available:false,region:'South'},
+    telangana:{name:'Telangana',nativeName:'తెలంగాణ',language:'తెలుగు (Telugu)',place:'Charminar',festival:'Bathukamma',food:'Hyderabadi Biryani',culture:'Perini Dance',icon:'🕌',available:false,region:'South'},
+    kerala:{name:'Kerala',nativeName:'കേരളം',language:'മലയാളം (Malayalam)',place:'Alappuzha Backwaters',festival:'Onam',food:'Sadya',culture:'Kathakali',icon:'🌴',available:false,region:'South'},
+    punjab:{name:'Punjab',nativeName:'ਪੰਜਾਬ',language:'ਪੰਜਾਬੀ (Punjabi)',place:'Golden Temple',festival:'Vaisakhi',food:'Sarson da Saag',culture:'Bhangra',icon:'🌾',available:false,region:'North'},
+    haryana:{name:'Haryana',nativeName:'हरियाणा',language:'हिन्दी (Hindi)',place:'Kurukshetra',festival:'Teej',food:'Bajra Khichdi',culture:'Saang Folk Theatre',icon:'🐂',available:true,region:'North',courseIndex:1},
+    himachal:{name:'Himachal Pradesh',nativeName:'हिमाचल प्रदेश',language:'हिन्दी (Hindi)',place:'Shimla',festival:'Kullu Dussehra',food:'Dham',culture:'Nati Dance',icon:'🏔️',available:true,region:'North',courseIndex:1},
+    jammu:{name:'Jammu & Kashmir',nativeName:'जम्मू और कश्मीर',language:'कश्मीरी (Kashmiri)',place:'Dal Lake',festival:'Tulip Festival',food:'Rogan Josh',culture:'Rouf Dance',icon:'🏔️',available:false,region:'North'},
+    uttarakhand:{name:'Uttarakhand',nativeName:'उत्तराखण्ड',language:'हिन्दी (Hindi)',place:'Kedarnath',festival:'Harela',food:'Kafuli',culture:'Chholiya Dance',icon:'⛰️',available:true,region:'North',courseIndex:1},
+    uttarpradesh:{name:'Uttar Pradesh',nativeName:'उत्तर प्रदेश',language:'हिन्दी (Hindi)',place:'Taj Mahal',festival:'Holi',food:'Kachori',culture:'Kathak',icon:'🕌',available:true,region:'North',courseIndex:1},
+    rajasthan:{name:'Rajasthan',nativeName:'राजस्थान',language:'हिन्दी (Hindi)',place:'Hawa Mahal',festival:'Gangaur',food:'Dal Baati Churma',culture:'Ghoomar',icon:'🐪',available:true,region:'West',courseIndex:1},
+    gujarat:{name:'Gujarat',nativeName:'ગુજરાત',language:'ગુજરાતી (Gujarati)',place:'Statue of Unity',festival:'Navratri',food:'Dhokla',culture:'Garba',icon:'🪘',available:false,region:'West'},
+    maharashtra:{name:'Maharashtra',nativeName:'महाराष्ट्र',language:'मराठी (Marathi)',place:'Raigad Fort',festival:'Ganesh Chaturthi',food:'Puran Poli',culture:'Lavani',icon:'🏰',available:false,region:'West'},
+    goa:{name:'Goa',nativeName:'गोवा',language:'कोंकणी (Konkani)',place:'Basilica of Bom Jesus',festival:'Shigmo',food:'Goan Fish Curry',culture:'Fugdi',icon:'🏖️',available:false,region:'West'},
+    madhyapradesh:{name:'Madhya Pradesh',nativeName:'मध्य प्रदेश',language:'हिन्दी (Hindi)',place:'Sanchi Stupa',festival:'Khajuraho Festival',food:'Poha',culture:'Gond Art',icon:'🪷',available:true,region:'Central',courseIndex:1},
+    chhattisgarh:{name:'Chhattisgarh',nativeName:'छत्तीसगढ़',language:'हिन्दी (Hindi)',place:'Chitrakote Falls',festival:'Bastar Dussehra',food:'Chila',culture:'Panthi Dance',icon:'🌿',available:true,region:'Central',courseIndex:1},
+    westbengal:{name:'West Bengal',nativeName:'পশ্চিমবঙ্গ',language:'বাংলা (Bengali)',place:'Victoria Memorial',festival:'Durga Puja',food:'Mishti Doi',culture:'Baul Music',icon:'🎭',available:false,region:'East'},
+    odisha:{name:'Odisha',nativeName:'ଓଡ଼ିଶା',language:'ଓଡ଼ିଆ (Odia)',place:'Konark Sun Temple',festival:'Rath Yatra',food:'Pakhala Bhata',culture:'Odissi',icon:'☀️',available:false,region:'East'},
+    bihar:{name:'Bihar',nativeName:'बिहार',language:'मैथिली / हिन्दी',place:'Nalanda',festival:'Chhath',food:'Litti Chokha',culture:'Madhubani Art',icon:'📚',available:false,region:'East'},
+    jharkhand:{name:'Jharkhand',nativeName:'झारखण्ड',language:'हिन्दी / Santali',place:'Hundru Falls',festival:'Sarhul',food:'Dhuska',culture:'Chhau Dance',icon:'🌳',available:false,region:'East'},
+    manipur:{name:'Manipur',nativeName:'ꯃꯅꯤꯄꯨꯔ',language:'মৈতৈলোন্ (Manipuri)',place:'Loktak Lake',festival:'Yaoshang',food:'Eromba',culture:'Ras Lila',icon:'🛶',available:false,region:'North-East'},
+    meghalaya:{name:'Meghalaya',nativeName:'Meghalaya',language:'Khasi',place:'Living Root Bridges',festival:'Wangala',food:'Jadoh',culture:'Shad Suk Mynsiem',icon:'🌧️',available:false,region:'North-East'},
+    mizoram:{name:'Mizoram',nativeName:'Mizoram',language:'Mizo',place:'Reiek',festival:'Chapchar Kut',food:'Bai',culture:'Cheraw Dance',icon:'🎋',available:false,region:'North-East'},
+    nagaland:{name:'Nagaland',nativeName:'Nagaland',language:'Naga Languages',place:'Kohima',festival:'Hornbill Festival',food:'Smoked Pork',culture:'Naga Folk Dance',icon:'🪶',available:false,region:'North-East'},
+    tripura:{name:'Tripura',nativeName:'ত্রিপুরা',language:'বাংলা / Kokborok',place:'Ujjayanta Palace',festival:'Kharchi Puja',food:'Mui Borok',culture:'Hojagiri',icon:'🏯',available:false,region:'North-East'},
+    sikkim:{name:'Sikkim',nativeName:'Sikkim',language:'Nepali',place:'Rumtek Monastery',festival:'Losar',food:'Momos',culture:'Cham Dance',icon:'🏔️',available:false,region:'North-East'},
+    arunachal:{name:'Arunachal Pradesh',nativeName:'Arunachal Pradesh',language:'Multiple tribal languages',place:'Tawang Monastery',festival:'Losar',food:'Thukpa',culture:'Ponung Dance',icon:'🌄',available:false,region:'North-East'},
+    english:{name:'English through India',nativeName:'English',language:'English',place:'Across India',festival:'Indian Festivals in English',food:'Indian Food Vocabulary',culture:'Stories and Communication',icon:'🌍',available:true,region:'All',courseIndex:2}
   };
+
+  const regions=['All','North','South','East','West','Central','North-East'];
+
+  const filteredExploreStates=Object.entries(exploreStates).filter(([_,state])=>{
+    const regionMatch=selectedRegion==='All' || state.region===selectedRegion || state.region==='All';
+    const query=stateSearch.trim().toLowerCase();
+    const searchMatch=!query || [state.name,state.nativeName,state.language,state.place,state.festival,state.food,state.culture]
+      .join(' ').toLowerCase().includes(query);
+    return regionMatch && searchMatch;
+  });
 
   const selectedState=exploreStates[selectedExploreState];
 
@@ -445,17 +411,28 @@ export default function App(){
               alt="Map of India with regional language labels"
             />
 
-            <div className="state-selector" aria-label="Choose a state">
-              {Object.entries(exploreStates).map(([key,state])=>
-                <button
-                  key={key}
-                  type="button"
-                  className={selectedExploreState===key?'active':''}
-                  onClick={()=>setSelectedExploreState(key)}
-                >
-                  <span>{state.icon}</span>{state.name}
-                </button>
-              )}
+            <div className="state-browser">
+              <div className="state-browser-controls">
+                <label>
+                  <span>Search state or language</span>
+                  <input type="search" value={stateSearch} onChange={event=>setStateSearch(event.target.value)} placeholder="Try Kannada, Assam, Bihu..." />
+                </label>
+                <label>
+                  <span>Region</span>
+                  <select value={selectedRegion} onChange={event=>setSelectedRegion(event.target.value)}>
+                    {regions.map(region=><option key={region} value={region}>{region}</option>)}
+                  </select>
+                </label>
+              </div>
+              <div className="state-browser-results" aria-label="Choose a state or language">
+                {filteredExploreStates.map(([key,state])=>
+                  <button key={key} type="button" className={selectedExploreState===key?'active':''} onClick={()=>setSelectedExploreState(key)}>
+                    <span>{state.icon}</span>
+                    <div><b>{state.name}</b><small>{state.language}</small></div>
+                  </button>
+                )}
+                {filteredExploreStates.length===0&&<p className="state-browser-empty">No matching state or language found.</p>}
+              </div>
             </div>
           </div>
         </section>
