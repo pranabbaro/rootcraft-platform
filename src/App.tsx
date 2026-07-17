@@ -58,7 +58,19 @@ function Header(){
 
   return <header className="topbar">
     <button className="brand" type="button" onClick={()=>scrollToSection('home')}>
-      <span className="brand-tree">🌳</span>
+      <span className="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" role="img">
+          <path d="M29 54h6V31h-6z" fill="#8a4f22"/>
+          <path d="M32 33c-8-6-15-4-20 1 1-10 9-18 20-18s19 8 20 18c-5-5-12-7-20-1z" fill="#2f8f46"/>
+          <circle cx="18" cy="19" r="8" fill="#6bbf59"/>
+          <circle cx="31" cy="12" r="9" fill="#4fa94f"/>
+          <circle cx="45" cy="20" r="8" fill="#73c761"/>
+          <circle cx="24" cy="27" r="8" fill="#2f8f46"/>
+          <circle cx="39" cy="28" r="8" fill="#58b957"/>
+          <path d="M32 30c-4-8-9-12-15-15M32 30c4-8 9-12 15-15M32 27V10" stroke="#8a4f22" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M16 56h32" stroke="#2f8f46" strokeWidth="3" strokeLinecap="round"/>
+        </svg>
+      </span>
       <span className="brand-text">
         <span><b>RootCraft</b> <strong>Academy</strong></span>
         <small>Learn • Connect • Grow</small>
@@ -181,6 +193,7 @@ export default function App(){
   const[selectedExploreState,setSelectedExploreState]=useState('karnataka');
   const[stateSearch,setStateSearch]=useState('');
   const[selectedRegion,setSelectedRegion]=useState('All');
+  const[showAllStates,setShowAllStates]=useState(false);
   const viewRef=useRef<HTMLElement>(null);
 
   useEffect(()=>{
@@ -394,7 +407,22 @@ export default function App(){
 
           <div className="map-hero-trust">
             <div className="family-illustration" aria-hidden="true">
-              <span>👧</span><span>👦</span>
+              <svg viewBox="0 0 150 90">
+                <circle cx="48" cy="28" r="18" fill="#f1b17f"/>
+                <path d="M31 28c0-14 10-22 20-22 10 0 18 7 18 19-8-8-19-9-38 3z" fill="#2d2a2a"/>
+                <path d="M29 77c2-24 10-33 25-33 15 0 24 10 25 33z" fill="#f3a83b"/>
+                <circle cx="102" cy="29" r="18" fill="#d99867"/>
+                <path d="M84 27c2-12 9-19 20-19 10 0 18 8 18 20-10-7-22-8-38-1z" fill="#1f1f1f"/>
+                <path d="M81 78c2-23 10-33 24-33 15 0 24 10 26 33z" fill="#2aa06a"/>
+                <rect x="55" y="51" width="41" height="29" rx="4" fill="#e04f4f"/>
+                <path d="M75 51v29" stroke="#fff4d8" strokeWidth="2"/>
+                <circle cx="42" cy="29" r="2" fill="#2d2a2a"/>
+                <circle cx="54" cy="29" r="2" fill="#2d2a2a"/>
+                <path d="M43 36c3 3 8 3 11 0" stroke="#8e4d38" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                <circle cx="96" cy="29" r="2" fill="#1f1f1f"/>
+                <circle cx="108" cy="29" r="2" fill="#1f1f1f"/>
+                <path d="M97 36c3 3 8 3 11 0" stroke="#7d4432" strokeWidth="2" fill="none" strokeLinecap="round"/>
+              </svg>
             </div>
             <strong>Made for India’s<br/>young learners</strong>
             <span className="trust-heart">♡</span>
@@ -412,20 +440,25 @@ export default function App(){
               <div className="state-browser-controls">
                 <label>
                   <span>Search state or language</span>
-                  <input type="search" value={stateSearch} onChange={event=>setStateSearch(event.target.value)} placeholder="Try Kannada, Assam, Bihu..." />
+                  <input
+                    type="search"
+                    value={stateSearch}
+                    onChange={event=>{setStateSearch(event.target.value);setShowAllStates(false)}}
+                    placeholder="Try Kannada, Assam, Bihu..."
+                  />
                 </label>
                 <label>
                   <span>Region</span>
-                  <select value={selectedRegion} onChange={event=>setSelectedRegion(event.target.value)}>
+                  <select
+                    value={selectedRegion}
+                    onChange={event=>{setSelectedRegion(event.target.value);setShowAllStates(false)}}
+                  >
                     {regions.map(region=><option key={region} value={region}>{region}</option>)}
                   </select>
                 </label>
               </div>
-              <div className="state-result-count">
-                {filteredExploreStates.length} {filteredExploreStates.length===1?'result':'results'} found
-              </div>
               <div className="state-browser-results" aria-label="Choose a state or language">
-                {filteredExploreStates.map(([key,state])=>
+                {(showAllStates?filteredExploreStates:filteredExploreStates.slice(0,6)).map(([key,state])=>
                   <button key={key} type="button" className={selectedExploreState===key?'active':''} onClick={()=>setSelectedExploreState(key)}>
                     <span>{state.icon}</span>
                     <div><b>{state.name}</b><small>{state.language}</small></div>
@@ -433,6 +466,11 @@ export default function App(){
                 )}
                 {filteredExploreStates.length===0&&<p className="state-browser-empty">No matching state or language found.</p>}
               </div>
+              {filteredExploreStates.length>6&&
+                <button className="show-more-states" type="button" onClick={()=>setShowAllStates(!showAllStates)}>
+                  {showAllStates?'Show Less ↑':`View All ${filteredExploreStates.length} States →`}
+                </button>
+              }
             </div>
           </div>
         </section>

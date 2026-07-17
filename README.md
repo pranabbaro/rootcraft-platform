@@ -158,3 +158,13 @@ This package includes the previously working deployment corrections:
 - Added a clearer available/coming-soon course banner.
 - Replaced the small trust line with a compact family card.
 - Preserved the searchable 22+ state and language browser.
+
+
+## V22 map, logo and mobile improvements
+
+- Enlarged the India map.
+- Removed the state-result scrollbar.
+- Added View All / Show Less behavior for state results.
+- Added a custom inline SVG RootCraft tree logo.
+- Replaced child emojis with a custom inline SVG illustration of two children.
+- Improved mobile behavior for state browsing.
