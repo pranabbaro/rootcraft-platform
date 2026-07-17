@@ -393,9 +393,11 @@ export default function App(){
           </div>
 
           <div className="map-hero-trust">
-            <div className="mini-css-flag" aria-hidden="true"><b></b><b></b><b></b></div>
+            <div className="family-illustration" aria-hidden="true">
+              <span>👧</span><span>👦</span>
+            </div>
             <strong>Made for India’s<br/>young learners</strong>
-            <span>♡</span>
+            <span className="trust-heart">♡</span>
           </div>
         </section>
 
@@ -419,6 +421,9 @@ export default function App(){
                   </select>
                 </label>
               </div>
+              <div className="state-result-count">
+                {filteredExploreStates.length} {filteredExploreStates.length===1?'result':'results'} found
+              </div>
               <div className="state-browser-results" aria-label="Choose a state or language">
                 {filteredExploreStates.map(([key,state])=>
                   <button key={key} type="button" className={selectedExploreState===key?'active':''} onClick={()=>setSelectedExploreState(key)}>
@@ -434,23 +439,28 @@ export default function App(){
 
         <aside className="state-detail-panel" aria-live="polite">
           <div className="state-detail-cover">
-            <div className="state-detail-landmark">{selectedState.icon}</div>
-            <div>
-              <span>{selectedState.nativeName}</span>
-              <h2>{selectedState.name}</h2>
+            <div className="state-landmark-card">
+              <div className="state-detail-landmark">{selectedState.icon}</div>
             </div>
+            <div className="state-title-block">
+              <h2>{selectedState.name}</h2>
+              <span>{selectedState.nativeName}</span>
+            </div>
+            <div className="state-pattern" aria-hidden="true">✦</div>
           </div>
 
           <div className="state-detail-list">
-            <article><span>💬</span><div><b>Language</b><p>{selectedState.language}</p></div></article>
-            <article><span>🏛️</span><div><b>Famous Place</b><p>{selectedState.place}</p></div></article>
-            <article><span>🪔</span><div><b>Festival</b><p>{selectedState.festival}</p></div></article>
-            <article><span>🍲</span><div><b>Food</b><p>{selectedState.food}</p></div></article>
-            <article><span>🎭</span><div><b>Culture</b><p>{selectedState.culture}</p></div></article>
+            <article><span className="detail-icon language-icon">💬</span><div><b>Language</b><p>{selectedState.language}</p></div></article>
+            <article><span className="detail-icon place-icon">🏛️</span><div><b>Famous Place</b><p>{selectedState.place}</p></div></article>
+            <article><span className="detail-icon festival-icon">🪔</span><div><b>Festival</b><p>{selectedState.festival}</p></div></article>
+            <article><span className="detail-icon food-icon">🍲</span><div><b>Food</b><p>{selectedState.food}</p></div></article>
+            <article><span className="detail-icon culture-icon">🎭</span><div><b>Culture</b><p>{selectedState.culture}</p></div></article>
           </div>
 
-          <button className="state-start-button" type="button" onClick={startSelectedState}>
-            {selectedState.available?`Start Learning ${selectedState.language.split(' ')[0]}`:'Course Coming Soon'} →
+          <button className={selectedState.available?'state-start-button available':'state-start-button coming'} type="button" onClick={startSelectedState}>
+            <b>{selectedState.available?`Start Learning ${selectedState.language.split(' ')[0]}`:'Course Coming Soon'}</b>
+            <small>{selectedState.available?'Begin your language journey':'We’re creating this course for you!'}</small>
+            <span>→</span>
           </button>
         </aside>
       </main>

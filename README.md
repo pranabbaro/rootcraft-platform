@@ -148,3 +148,13 @@ This package includes the previously working deployment corrections:
 - Kannada starts the existing live course; other selected languages show Coming Soon.
 - Added feature shortcuts for games, stories, culture, achievements, AI tutor and families.
 - Preserved all existing learning, stories, games, culture modules, About India and deployment configuration.
+
+
+## V21 polished front page
+
+- Rebalanced the three-column hero layout to match the approved mockup.
+- Improved map, search and state-result alignment.
+- Redesigned the selected-state panel with a premium state header.
+- Added a clearer available/coming-soon course banner.
+- Replaced the small trust line with a compact family card.
+- Preserved the searchable 22+ state and language browser.
