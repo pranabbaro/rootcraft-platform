@@ -1894,3 +1894,14 @@ footer span,footer p{color:var(--muted);font-size:13px}
     letter-spacing:3px;
   }
 }
+
+
+/* Updated kids image only */
+.family-illustration.premium-kids .kids-learning-image{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  border-radius:inherit;
+}
