@@ -399,20 +399,14 @@ export default function App(){
             <button className="outline large" type="button" onClick={()=>scrollToSection('languages')}>
               🚀 Start Learning Now
             </button>
+          <div className="hero-kids-image">
+            <img
+              src="/kids-learning.png"
+              alt="Children learning together"
+            />
           </div>
-
-          <div className="map-hero-trust">
-            <div className="family-illustration premium-kids" aria-hidden="true">
-              <img
-                src="/kids-learning.png"
-                alt=""
-                className="kids-learning-image"
-              />
-            </div>
-            <strong>Made for India’s<br/>young learners</strong>
-            <span className="trust-heart">♡</span>
           </div>
-        </section>
+</section>
 
         <section id="india-explorer" className="india-explorer" aria-label="Explore Indian states">
           <div className="explorer-map">
