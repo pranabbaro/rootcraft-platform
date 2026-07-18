@@ -1038,7 +1038,7 @@ export default function App(){
       <div className="footer-brand"><b>🌳 RootCraft Academy</b><p>Celebrating every Indian language and culture.</p></div>
       <div><strong>Learn</strong><span>Languages</span><span>Stories</span><span>Games</span></div>
       <div><strong>Explore</strong><span>Indian Culture</span><span>About India</span><span>Learning Journey</span></div>
-      <div><strong>Support</strong><span>Parents</span><span>Teachers</span><span>Contact</span>Pranab.baro@gmail.com</span></div>
+      <div><strong>Support</strong><span>Parents</span><span>Teachers</span><span>Contact: Pranab.baro@gmail.com</span></div>
       <div><strong>Legal</strong><span>Privacy Policy</span><span>Terms of Use</span></div>
     </footer>
   </>;
