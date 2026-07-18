@@ -58,59 +58,12 @@ function Header(){
 
   return <header className="topbar">
     <button className="brand" type="button" onClick={()=>scrollToSection('home')}>
-      <span className="brand-logo banyan-brand-logo" aria-hidden="true">
-        <svg className="banyan-logo-svg" viewBox="0 0 190 155" role="img">
-          <defs>
-            <linearGradient id="banyanLeaves" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#8bc442"/>
-              <stop offset="100%" stopColor="#21683a"/>
-            </linearGradient>
-            <linearGradient id="banyanWood" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#9a6b34"/>
-              <stop offset="100%" stopColor="#59361f"/>
-            </linearGradient>
-          </defs>
-
-          <ellipse cx="95" cy="143" rx="59" ry="5" fill="#dce9d8"/>
-
-          <g fill="none" stroke="url(#banyanWood)" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M86 116C72 128 62 136 43 143M89 116C77 129 68 143 53 149M92 116C87 130 85 140 82 151M98 116C103 130 107 141 111 151M101 116C114 129 124 142 142 149M104 116C120 127 133 137 151 143" strokeWidth="3"/>
-            <path d="M84 56C84 77 85 97 88 116M106 56C106 78 105 98 102 116" strokeWidth="11"/>
-            <path d="M95 70C72 45 51 40 27 53M95 70C119 44 140 40 163 53M92 82C62 66 39 71 18 89M98 82C128 66 151 71 172 89M92 60C78 40 68 31 53 25M98 60C111 40 121 31 137 25" strokeWidth="6"/>
-          </g>
-
-          <g stroke="#80582f" strokeWidth="1.7" strokeLinecap="round">
-            <path d="M35 60V103M52 48V93M70 43V87M120 43V87M138 48V94M155 60V104"/>
-          </g>
-
-          <g fill="url(#banyanLeaves)">
-            <path d="M13 83C13 68 28 61 41 68C37 82 25 90 13 83Z"/>
-            <path d="M22 54C24 39 42 33 54 43C49 58 35 64 22 54Z"/>
-            <path d="M42 32C48 17 65 15 74 27C67 41 53 44 42 32Z"/>
-            <path d="M66 20C75 5 92 7 97 21C88 33 75 32 66 20Z"/>
-            <path d="M89 18C98 4 115 7 119 22C109 33 97 32 89 18Z"/>
-            <path d="M114 27C123 14 140 18 145 33C134 44 121 41 114 27Z"/>
-            <path d="M136 43C147 32 164 39 166 54C154 64 142 59 136 43Z"/>
-            <path d="M150 68C162 60 177 68 176 82C165 90 153 83 150 68Z"/>
-            <path d="M43 67C51 53 68 52 76 64C69 78 54 79 43 67Z"/>
-            <path d="M114 64C122 52 139 53 147 67C136 79 121 78 114 64Z"/>
-            <path d="M72 43C80 28 97 28 104 42C97 56 81 56 72 43Z"/>
-            <path d="M85 31C94 18 111 20 116 35C106 47 93 45 85 31Z"/>
-            <path d="M31 80C44 72 58 80 56 94C44 101 32 94 31 80Z"/>
-            <path d="M134 80C147 72 161 79 161 94C149 101 136 94 134 80Z"/>
-          </g>
-
-          <g fill="#fffaf0" stroke="#bd914e" strokeWidth="1.5">
-            <path d="M49 117Q72 99 94 117Q72 124 49 117Z"/>
-            <path d="M141 117Q118 99 96 117Q118 124 141 117Z"/>
-          </g>
-          <path d="M95 102V120" stroke="#c59b53" strokeWidth="1.7"/>
-
-          <g fill="#62b34a">
-            <path d="M95 112C89 106 90 99 95 96C100 101 100 107 95 112Z"/>
-            <path d="M95 112C101 106 107 105 110 109C104 114 100 115 95 112Z"/>
-          </g>
-        </svg>
+      <span className="brand-logo banyan-brand-logo">
+        <img
+          src="/rootcraft-banyan-logo.png"
+          alt="RootCraft Academy Banyan Tree Logo"
+          className="rootcraft-logo-image"
+        />
       </span>
 
       <span className="brand-text banyan-brand-text">
