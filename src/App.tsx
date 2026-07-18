@@ -929,7 +929,23 @@ export default function App(){
     </section>
 
     <footer>
-      <div className="footer-brand"><b>🌳 RootCraft Academy</b><p>Celebrating every Indian language and culture.</p></div>
+      <div className="footer-brand">
+        <div className="footer-brand-match">
+          <span className="footer-brand-logo">
+            <img
+              src="/rootcraft-banyan-logo.png"
+              alt="RootCraft Academy Banyan Tree Logo"
+              className="rootcraft-logo-image"
+            />
+          </span>
+          <span className="footer-brand-text">
+            <span className="rootcraft-wordmark">RootCraft<i>◆</i></span>
+            <strong className="academy-wordmark">ACADEMY</strong>
+            <small>Deep Roots. Endless Learning.</small>
+          </span>
+        </div>
+        <p>Celebrating every Indian language and culture.</p>
+      </div>
       <div><strong>Learn</strong><span>Languages</span><span>Stories</span><span>Games</span></div>
       <div><strong>Explore</strong><span>Indian Culture</span><span>About India</span><span>Learning Journey</span></div>
       <div><strong>Support</strong><span>Parents</span><span>Teachers</span><span>Contact: Pranabbarokumar@gmail.com</span></div>
