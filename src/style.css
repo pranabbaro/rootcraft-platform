@@ -2011,3 +2011,35 @@ footer span,footer p{color:var(--muted);font-size:13px}
 .story-translation{margin-top:22px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:#fffdf8}
 .story-translation summary{cursor:pointer;font-weight:850;color:var(--green)}
 .story-translation p{margin-top:12px}
+
+
+/* Real fruit photographs for the Kannada 100-fruit lesson */
+.fruit-real-image{
+  width:100%;
+  height:100%;
+  max-width:150px;
+  max-height:120px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+  border-radius:12px;
+}
+
+.fruit-image-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:80px;
+  font-size:42px;
+}
+
+.memory-tile .fruit-real-image{
+  max-width:72px;
+  max-height:62px;
+}
+
+.quiz-picture .fruit-real-image{
+  max-width:180px;
+  max-height:150px;
+}
