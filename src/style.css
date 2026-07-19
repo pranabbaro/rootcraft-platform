@@ -2005,3 +2005,9 @@ footer span,footer p{color:var(--muted);font-size:13px}
     display:none;
   }
 }
+
+.story-duration{display:block;margin:8px 0 14px;color:var(--green);font-weight:800}
+.story-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.story-translation{margin-top:22px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:#fffdf8}
+.story-translation summary{cursor:pointer;font-weight:850;color:var(--green)}
+.story-translation p{margin-top:12px}
